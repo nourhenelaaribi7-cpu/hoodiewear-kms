@@ -1,0 +1,212 @@
+[
+  {
+    "id": "img_faq_livraison_chunk_1",
+    "source": "ocr_faq_livraison",
+    "question": "Information extraite de : FAQ Livraison HoodieWear",
+    "reponse": "FAQ Livraison HoodieWear\n\nFAQ LIVRAISON HOODIEWEAR,\n\nQ: Quels sont vos delais de livraison ?\nR: Tunisie : 3 a 5 jours ouvres. Europe : 5 a 10 jours. International : 10 a 15\njours.\n\nQ: Comment suivre ma commande ?\nR: Un email avec lien de suivi vous est envoye apres expedition. Suivez aussi\ndans votre espace client.\n\nQ: Livrez-vous partout en Tunisie ?\nR: Oui, dans toutes les gouvernorats via Arame",
+    "tags": [
+      "livraison",
+      "suivi",
+      "délais",
+      "faq"
+    ],
+    "mots_cles": [
+      "livraison",
+      "suivi",
+      "délais",
+      "faq"
+    ],
+    "type": "ocr_extraction",
+    "methode": "tesseract-ocr",
+    "langue": "fr"
+  },
+  {
+    "id": "img_faq_livraison_chunk_2",
+    "source": "ocr_faq_livraison",
+    "question": "Information extraite de : FAQ Livraison HoodieWear",
+    "reponse": "e ?\nR: Oui, dans toutes les gouvernorats via Aramex et Jumia Logistics.\n\nQ: Que faire si ma commande n arrive pas ?\nR: Apres 7 jours ouvres sans reception, contactez support@hoodiewear.com",
+    "tags": [
+      "livraison",
+      "suivi",
+      "délais",
+      "faq"
+    ],
+    "mots_cles": [
+      "livraison",
+      "suivi",
+      "délais",
+      "faq"
+    ],
+    "type": "ocr_extraction",
+    "methode": "tesseract-ocr",
+    "langue": "fr"
+  },
+  {
+    "id": "img_politique_retour_chunk_1",
+    "source": "ocr_politique_retour",
+    "question": "Information extraite de : Politique de Retour HoodieWear",
+    "reponse": "Politique de Retour HoodieWear\n\nPOLITIQUE DE RETOUR ET REMBOURSEMENT\n\nDelai de retour : 30 jours apres reception\nConditions : Article non porte, etiquettes intactes, emballage origine\n\nPROCEDURE DE RETOUR:\n\n1. Contactez support@hoodiewear.com avec votre numero de commande\n2. Recevez votre bon de retour par email\n\n3. Deposez le colis dans un point relais agree\n\n4. Remboursement sous 5 a 7 jours ouv",
+    "tags": [
+      "retour",
+      "remboursement",
+      "politique",
+      "échange"
+    ],
+    "mots_cles": [
+      "retour",
+      "remboursement",
+      "politique",
+      "échange"
+    ],
+    "type": "ocr_extraction",
+    "methode": "tesseract-ocr",
+    "langue": "fr"
+  },
+  {
+    "id": "img_politique_retour_chunk_2",
+    "source": "ocr_politique_retour",
+    "question": "Information extraite de : Politique de Retour HoodieWear",
+    "reponse": "elais agree\n\n4. Remboursement sous 5 a 7 jours ouvres apres reception\n\nEXCEPTIONS :\n\n- Articles en promotion : echange uniquement\n\n- Articles personnalises : non retournables\n\n- Defauts de fabrication : pris en charge par HoodieWear",
+    "tags": [
+      "retour",
+      "remboursement",
+      "politique",
+      "échange"
+    ],
+    "mots_cles": [
+      "retour",
+      "remboursement",
+      "politique",
+      "échange"
+    ],
+    "type": "ocr_extraction",
+    "methode": "tesseract-ocr",
+    "langue": "fr"
+  },
+  {
+    "id": "img_guide_tailles_chunk_1",
+    "source": "ocr_guide_tailles",
+    "question": "Information extraite de : Guide des Tailles HoodieWear",
+    "reponse": "Guide des Tailles HoodieWear\n\nGUIDE DES TAILLES HOODIEWEAR\n\nHOODIES ET SWEATS :\n\nXS : Tour de poitrine 80-85 cm Longueur 63 cm\n\nS : Tour de poitrine 86-91 cm Longueur 65 cm\n\nM : Tour de poitrine 92-97 cm Longueur 68 cm\n\nL : Tour de poitrine 98-103 cm Longueur 71 cm\nXL : Tour de poitrine 104-109 cm Longueur 74 cm\nXXL: Tour de poitrine 110-116 cm Longueur 77 cm\n\nCONSEILS :\n\n- Pour un style oversized",
+    "tags": [
+      "tailles",
+      "guide",
+      "hoodie",
+      "mesures"
+    ],
+    "mots_cles": [
+      "tailles",
+      "guide",
+      "hoodie",
+      "mesures"
+    ],
+    "type": "ocr_extraction",
+    "methode": "tesseract-ocr",
+    "langue": "fr"
+  },
+  {
+    "id": "img_guide_tailles_chunk_2",
+    "source": "ocr_guide_tailles",
+    "question": "Information extraite de : Guide des Tailles HoodieWear",
+    "reponse": "gueur 77 cm\n\nCONSEILS :\n\n- Pour un style oversized : prenez une taille au-dessus\n- Pour un style fitted : gardez votre taille habituelle\n\n- En cas de doute : optez pour la plus grande\n\n- Nos hoodies retrécissent légérement au lavage (2-3%)\n\nContact tailles : tailles@hoodiewear.com",
+    "tags": [
+      "tailles",
+      "guide",
+      "hoodie",
+      "mesures"
+    ],
+    "mots_cles": [
+      "tailles",
+      "guide",
+      "hoodie",
+      "mesures"
+    ],
+    "type": "ocr_extraction",
+    "methode": "tesseract-ocr",
+    "langue": "fr"
+  },
+  {
+    "id": "img_entretien_chunk_1",
+    "source": "ocr_entretien",
+    "question": "Information extraite de : Guide Entretien HoodieWear",
+    "reponse": "Guide Entretien HoodieWear\n\nGUIDE D ENTRETIEN DE VOS ARTICLES HOODIEWEAR,\n\nLAVAGE :\n\n- Temperature maximale : 30 degres\n\n- Lavage a | envers pour preserver les couleurs\n- Evitez les produits chlores\n\n- Utilisez une lessive douce\n\nSECHAGE :\n\n- Sechage a | air libre recommande\n\n- Evitez le seche-linge (risque de retrecissement)\n- Ne pas essorer a haute vitesse\n\n- Sechez a plat pour conserver la form",
+    "tags": [
+      "entretien",
+      "lavage",
+      "séchage",
+      "qualité"
+    ],
+    "mots_cles": [
+      "entretien",
+      "lavage",
+      "séchage",
+      "qualité"
+    ],
+    "type": "ocr_extraction",
+    "methode": "tesseract-ocr",
+    "langue": "fr"
+  },
+  {
+    "id": "img_entretien_chunk_2",
+    "source": "ocr_entretien",
+    "question": "Information extraite de : Guide Entretien HoodieWear",
+    "reponse": "te vitesse\n\n- Sechez a plat pour conserver la forme\n\nREPASSAGE :\n\n- Repassez a | envers a basse temperature (max 110 degres)\n- Evitez de repasser sur les impressions\n\n- Utilisez un linge humide entre le fer et le vetement\n\nSTOCKAGE :\n- Pliez plutot que suspendrez\n- Stockez dans un endroit sec et ventile",
+    "tags": [
+      "entretien",
+      "lavage",
+      "séchage",
+      "qualité"
+    ],
+    "mots_cles": [
+      "entretien",
+      "lavage",
+      "séchage",
+      "qualité"
+    ],
+    "type": "ocr_extraction",
+    "methode": "tesseract-ocr",
+    "langue": "fr"
+  },
+  {
+    "id": "img_paiement_chunk_1",
+    "source": "ocr_paiement",
+    "question": "Information extraite de : Modes de Paiement HoodieWear",
+    "reponse": "Modes de Paiement HoodieWear\n\nMODES DE PAIEMENT ACCEPTES.\n\nPAIEMENT EN LIGNE :\n\n- Carte bancaire Visa / Mastercard (3D Secure)\n\n- PayPal\n\n- Virement bancaire (delai supplementaire 2-3 jours)\n\nPAIEMENT A LA LIVRAISON :\n\n- Disponible uniquement en Tunisie\n\n- Especes uniquement\n\n- Supplement de 3 DT pour ce mode de paiement\n\nSECURITE :\n\n- Toutes les transactions sont chiffrees SSL\n\n- Nous ne stockons",
+    "tags": [
+      "paiement",
+      "carte",
+      "paypal",
+      "sécurité"
+    ],
+    "mots_cles": [
+      "paiement",
+      "carte",
+      "paypal",
+      "sécurité"
+    ],
+    "type": "ocr_extraction",
+    "methode": "tesseract-ocr",
+    "langue": "fr"
+  },
+  {
+    "id": "img_paiement_chunk_2",
+    "source": "ocr_paiement",
+    "question": "Information extraite de : Modes de Paiement HoodieWear",
+    "reponse": "ransactions sont chiffrees SSL\n\n- Nous ne stockons aucune donnee bancaire\n\n- Paiement securise par notre partenaire Stripe\n\nEN CAS DE PROBLEME :\n\n- Double prelevement : remboursement sous 5-7 jours\n- Paiement refuse : verifiez votre plafond CB\n\n- Contact : paiement@hoodiewear.com",
+    "tags": [
+      "paiement",
+      "carte",
+      "paypal",
+      "sécurité"
+    ],
+    "mots_cles": [
+      "paiement",
+      "carte",
+      "paypal",
+      "sécurité"
+    ],
+    "type": "ocr_extraction",
+    "methode": "tesseract-ocr",
+    "langue": "fr"
+  }
+]

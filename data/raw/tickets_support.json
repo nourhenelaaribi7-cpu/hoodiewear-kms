@@ -1,0 +1,90 @@
+[
+  {
+    "ticket_id": "TK-001",
+    "date": "2025-01-10",
+    "canal": "email",
+    "question": "Comment utiliser un code promo ?",
+    "reponse": "Entrez votre code promo dans le champ 'Code de réduction' lors du paiement, avant de valider la commande. Le minimum d'achat est de 35€ et le code est à usage unique.",
+    "tags": ["promo", "code", "réduction"],
+    "mots_cles": ["code promo", "réduction", "coupon", "discount"],
+    "statut": "résolu",
+    "satisfaction": 5
+  },
+  {
+    "ticket_id": "TK-002",
+    "date": "2025-01-11",
+    "canal": "chat",
+    "question": "La livraison express est-elle disponible ?",
+    "reponse": "Oui ! La livraison express 24h est disponible en France métropolitaine pour toute commande passée avant 14h. Un supplément de 4,99€ s'applique.",
+    "tags": ["livraison", "express"],
+    "mots_cles": ["express", "rapide", "24h", "urgent", "livraison rapide"],
+    "statut": "résolu",
+    "satisfaction": 5
+  },
+  {
+    "ticket_id": "TK-003",
+    "date": "2025-01-12",
+    "canal": "email",
+    "question": "Mon colis est marqué livré mais je n'ai rien reçu.",
+    "reponse": "Vérifiez d'abord auprès de vos voisins et de votre boîte aux lettres. Si introuvable, contactez-nous sous 48h avec votre numéro de commande, nous ouvrons un litige transporteur et vous renvoyons le colis.",
+    "tags": ["livraison", "perdu", "litige"],
+    "mots_cles": ["colis perdu", "livré", "introuvable", "volé", "disparu"],
+    "statut": "résolu",
+    "satisfaction": 4
+  },
+  {
+    "ticket_id": "TK-004",
+    "date": "2025-01-13",
+    "canal": "chat",
+    "question": "Puis-je changer l'adresse de livraison après commande ?",
+    "reponse": "Oui, mais uniquement dans les 2 heures suivant la commande. Contactez immédiatement notre support par chat avec votre numéro de commande. Passé ce délai, le colis est déjà en préparation.",
+    "tags": ["commande", "adresse", "modification"],
+    "mots_cles": ["adresse", "modifier", "changer", "livraison", "erreur adresse"],
+    "statut": "résolu",
+    "satisfaction": 4
+  },
+  {
+    "ticket_id": "TK-005",
+    "date": "2025-01-14",
+    "canal": "email",
+    "question": "Les hoodies sont-ils disponibles en grandes tailles ?",
+    "reponse": "Oui, notre collection est disponible jusqu'au XXL. Pour les tailles au-delà, nous proposons une collection 'Plus Size' sur demande spéciale via support@hoodiewear.com.",
+    "tags": ["taille", "produit", "XXL"],
+    "mots_cles": ["grande taille", "XXL", "plus size", "taille disponible"],
+    "statut": "résolu",
+    "satisfaction": 5
+  },
+  {
+    "ticket_id": "TK-006",
+    "date": "2025-01-15",
+    "canal": "chat",
+    "question": "Comment fonctionne le programme de fidélité ?",
+    "reponse": "Notre programme HoodiePoints vous fait gagner 1 point par euro dépensé. 100 points = 5€ de réduction. Les points sont valables 12 mois et utilisables dès 50 points accumulés.",
+    "tags": ["fidélité", "points", "programme"],
+    "mots_cles": ["fidélité", "points", "récompense", "HoodiePoints"],
+    "statut": "résolu",
+    "satisfaction": 5
+  },
+  {
+    "ticket_id": "TK-007",
+    "date": "2025-01-16",
+    "canal": "email",
+    "question": "Quels sont les matériaux utilisés dans vos hoodies ?",
+    "reponse": "Nos hoodies sont fabriqués en 80% coton pré-rétréci et 20% polyester. Ils sont certifiés OEKO-TEX, sans substances nocives, et lavables en machine à 30°C.",
+    "tags": ["produit", "matériau", "qualité"],
+    "mots_cles": ["matériau", "coton", "polyester", "composition", "qualité", "OEKO-TEX"],
+    "statut": "résolu",
+    "satisfaction": 5
+  },
+  {
+    "ticket_id": "TK-008",
+    "date": "2025-01-17",
+    "canal": "chat",
+    "question": "Y a-t-il des frais de douane pour la Tunisie ?",
+    "reponse": "Des frais de douane peuvent s'appliquer selon la valeur du colis et la réglementation tunisienne. HoodieWear n'est pas responsable de ces frais. Nous recommandons de vérifier les règles douanières locales avant commande.",
+    "tags": ["international", "douane", "Tunisie"],
+    "mots_cles": ["douane", "Tunisie", "taxes", "international", "frais"],
+    "statut": "résolu",
+    "satisfaction": 3
+  }
+]

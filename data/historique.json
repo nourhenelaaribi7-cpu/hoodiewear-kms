@@ -1,0 +1,290 @@
+[
+  {
+    "date": "2026-04-17 23:54",
+    "nb_messages": 4,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Quels sont les délais de livraison ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Les délais de livraison sont de 2 à 3 jours ouvrés en France métropolitaine. Pour les livraisons internationales, comptez 5 à 10 jours ouvrés. 😊 \n\nSi vous souhaitez une livraison plus rapide, nous proposons également une option de livraison express 24h en France métropolitaine, pour une commande passée avant 14h, avec un supplément de 4,99€. 🕒️"
+      },
+      {
+        "role": "user",
+        "content": "Puis-je choisir l'option de livraison express pour une commande internationale ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Désolé, mais l'option de livraison express 24h n'est disponible que pour les commandes en France métropolitaine, pour les commandes passées avant 14h, avec un supplément de 4,99€. Pour les livraisons internationales, les délais de livraison sont de 5 à 10 jours ouvrés. 🌍 \n\nSi vous souhaitez plus d'informations sur les frais de port international ou les délais de livraison pour votre pays spécifique, n'hésitez pas à me demander. 😊"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-17 23:54",
+    "nb_messages": 4,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Quels sont les délais de livraison ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Les délais de livraison sont de 2 à 3 jours ouvrés en France métropolitaine. Pour les livraisons internationales, comptez 5 à 10 jours ouvrés. 😊 \n\nSi vous souhaitez une livraison plus rapide, nous proposons également une option de livraison express 24h en France métropolitaine, pour une commande passée avant 14h, avec un supplément de 4,99€. 🕒️"
+      },
+      {
+        "role": "user",
+        "content": "Puis-je choisir l'option de livraison express pour une commande internationale ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Désolé, mais l'option de livraison express 24h n'est disponible que pour les commandes en France métropolitaine, pour les commandes passées avant 14h, avec un supplément de 4,99€. Pour les livraisons internationales, les délais de livraison sont de 5 à 10 jours ouvrés. 🌍 \n\nSi vous souhaitez plus d'informations sur les frais de port international ou les délais de livraison pour votre pays spécifique, n'hésitez pas à me demander. 😊"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-17 23:56",
+    "nb_messages": 12,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Comment retourner un article ?"
+      },
+      {
+        "role": "assistant",
+        "content": "👋 Vous disposez de 30 jours après réception pour retourner un article. Pour ce faire, connectez-vous à votre espace client, section 'Mes commandes', puis cliquez sur 'Retourner un article'. Les frais de retour sont à votre charge. Assurez-vous que l'article est non porté et que les étiquettes sont intactes, et utilisez l'emballage original si possible. 📦\n\nSi vous avez besoin d'aide supplémentaire, n'hésitez pas à nous contacter à support@hoodiewear.com. 😊"
+      },
+      {
+        "role": "user",
+        "content": "Puis-je retourner un article si j'ai déjà porté une fois ?"
+      },
+      {
+        "role": "assistant",
+        "content": "👋 Selon notre politique de retour, les articles doivent être non portés et avoir les étiquettes intactes pour être éligibles au retour. Si vous avez déjà porté l'article une fois, malheureusement, vous ne pourrez pas le retourner. 🙅‍♂️\n\nPour plus d'informations, vous pouvez consulter notre politique de retour dans votre espace client ou contacter notre équipe de support à support@hoodiewear.com. 😊"
+      },
+      {
+        "role": "user",
+        "content": "Comment puis-je connaître les détails de la politique de retour de votre entreprise ?"
+      },
+      {
+        "role": "assistant",
+        "content": "👋 Vous pouvez connaître les détails de la politique de retour de HoodieWear en vous connectant à votre espace client et en consultant la section 'Mes commandes' ou en visitant notre site web. Notre politique de retour est également disponible dans les documents joints à votre commande.\n\nVoici les points clés de notre politique de retour :\n- Délai : 30 jours après réception de la commande\n- État : Article non porté, étiquettes intactes\n- Emballage : Original de préférence\n- Articles exclus : Promotions finales, articles personnalisés\n\nSi vous avez besoin d'aide supplémentaire, n'hésitez pas à nous contacter à support@hoodiewear.com. 😊"
+      },
+      {
+        "role": "user",
+        "content": "Comment puis-je procéder pour retourner un article qui ne correspond pas à ma taille ?"
+      },
+      {
+        "role": "assistant",
+        "content": "👋 Pour retourner un article qui ne correspond pas à votre taille, vous pouvez suivre ces étapes :\n\n1. Connectez-vous à votre espace client\n2. Allez dans la rubrique \"Mes Commandes\" et cliquez sur \"Retourner un article\"\n3. Choisissez le motif de retour : \"Taille incorrecte\"\n4. Imprimez l'étiquette de retour\n5. Déposez le colis en point relais\n\nN'oubliez pas que les frais de retour sont à votre charge et que l'article doit être non porté, avec les étiquettes intactes, et dans son emballage original de préférence. Vous avez 30 jours après réception de la commande pour effectuer le retour.\n\nSi vous avez besoin d'aide supplémentaire, n'hésitez pas à nous contacter à support@hoodiewear.com. 😊"
+      },
+      {
+        "role": "user",
+        "content": "Comment puis-je procéder pour retourner un article qui ne correspond pas à ma taille ?"
+      },
+      {
+        "role": "assistant",
+        "content": "👋 Pour retourner un article qui ne correspond pas à votre taille, vous pouvez suivre ces étapes :\n\n1. Connectez-vous à votre espace client\n2. Allez dans la rubrique \"Mes Commandes\" et cliquez sur \"Retourner un article\"\n3. Choisissez le motif de retour : \"Taille incorrecte\"\n4. Imprimez l'étiquette de retour\n5. Déposez le colis en point relais\n\nN'oubliez pas que les frais de retour sont à votre charge et que l'article doit être non porté, avec les étiquettes intactes, et dans son emballage original de préférence. Vous avez 30 jours après réception de la commande pour effectuer le retour.\n\nAprès réception de votre retour, nous vous proposerons un remboursement complet ou un avoir valable 12 mois, dans les 5 à 7 jours ouvrés. 😊"
+      },
+      {
+        "role": "user",
+        "content": "Comment suis-je remboursé si je retourne un article qui ne correspond pas à ma taille ?"
+      },
+      {
+        "role": "assistant",
+        "content": "👋 Si vous retournez un article qui ne correspond pas à votre taille, vous serez remboursé dans les 5 à 7 jours ouvrés après réception de votre retour. Le remboursement sera effectué par le même moyen de paiement que celui utilisé pour l'achat initial. Alternativement, vous pouvez choisir un avoir valable 12 mois. 😊"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-17 23:58",
+    "nb_messages": 12,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Comment retourner un article ?"
+      },
+      {
+        "role": "assistant",
+        "content": "👋 Vous disposez de 30 jours après réception pour retourner un article. Pour ce faire, connectez-vous à votre espace client, section 'Mes commandes', puis cliquez sur 'Retourner un article'. Les frais de retour sont à votre charge. Assurez-vous que l'article est non porté et que les étiquettes sont intactes, et utilisez l'emballage original si possible. 📦\n\nSi vous avez besoin d'aide supplémentaire, n'hésitez pas à nous contacter à support@hoodiewear.com. 😊"
+      },
+      {
+        "role": "user",
+        "content": "Puis-je retourner un article si j'ai déjà porté une fois ?"
+      },
+      {
+        "role": "assistant",
+        "content": "👋 Selon notre politique de retour, les articles doivent être non portés et avoir les étiquettes intactes pour être éligibles au retour. Si vous avez déjà porté l'article une fois, malheureusement, vous ne pourrez pas le retourner. 🙅‍♂️\n\nPour plus d'informations, vous pouvez consulter notre politique de retour dans votre espace client ou contacter notre équipe de support à support@hoodiewear.com. 😊"
+      },
+      {
+        "role": "user",
+        "content": "Comment puis-je connaître les détails de la politique de retour de votre entreprise ?"
+      },
+      {
+        "role": "assistant",
+        "content": "👋 Vous pouvez connaître les détails de la politique de retour de HoodieWear en vous connectant à votre espace client et en consultant la section 'Mes commandes' ou en visitant notre site web. Notre politique de retour est également disponible dans les documents joints à votre commande.\n\nVoici les points clés de notre politique de retour :\n- Délai : 30 jours après réception de la commande\n- État : Article non porté, étiquettes intactes\n- Emballage : Original de préférence\n- Articles exclus : Promotions finales, articles personnalisés\n\nSi vous avez besoin d'aide supplémentaire, n'hésitez pas à nous contacter à support@hoodiewear.com. 😊"
+      },
+      {
+        "role": "user",
+        "content": "Comment puis-je procéder pour retourner un article qui ne correspond pas à ma taille ?"
+      },
+      {
+        "role": "assistant",
+        "content": "👋 Pour retourner un article qui ne correspond pas à votre taille, vous pouvez suivre ces étapes :\n\n1. Connectez-vous à votre espace client\n2. Allez dans la rubrique \"Mes Commandes\" et cliquez sur \"Retourner un article\"\n3. Choisissez le motif de retour : \"Taille incorrecte\"\n4. Imprimez l'étiquette de retour\n5. Déposez le colis en point relais\n\nN'oubliez pas que les frais de retour sont à votre charge et que l'article doit être non porté, avec les étiquettes intactes, et dans son emballage original de préférence. Vous avez 30 jours après réception de la commande pour effectuer le retour.\n\nSi vous avez besoin d'aide supplémentaire, n'hésitez pas à nous contacter à support@hoodiewear.com. 😊"
+      },
+      {
+        "role": "user",
+        "content": "Comment puis-je procéder pour retourner un article qui ne correspond pas à ma taille ?"
+      },
+      {
+        "role": "assistant",
+        "content": "👋 Pour retourner un article qui ne correspond pas à votre taille, vous pouvez suivre ces étapes :\n\n1. Connectez-vous à votre espace client\n2. Allez dans la rubrique \"Mes Commandes\" et cliquez sur \"Retourner un article\"\n3. Choisissez le motif de retour : \"Taille incorrecte\"\n4. Imprimez l'étiquette de retour\n5. Déposez le colis en point relais\n\nN'oubliez pas que les frais de retour sont à votre charge et que l'article doit être non porté, avec les étiquettes intactes, et dans son emballage original de préférence. Vous avez 30 jours après réception de la commande pour effectuer le retour.\n\nAprès réception de votre retour, nous vous proposerons un remboursement complet ou un avoir valable 12 mois, dans les 5 à 7 jours ouvrés. 😊"
+      },
+      {
+        "role": "user",
+        "content": "Comment suis-je remboursé si je retourne un article qui ne correspond pas à ma taille ?"
+      },
+      {
+        "role": "assistant",
+        "content": "👋 Si vous retournez un article qui ne correspond pas à votre taille, vous serez remboursé dans les 5 à 7 jours ouvrés après réception de votre retour. Le remboursement sera effectué par le même moyen de paiement que celui utilisé pour l'achat initial. Alternativement, vous pouvez choisir un avoir valable 12 mois. 😊"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-17 23:58",
+    "nb_messages": 4,
+    "messages": [
+      {
+        "role": "user",
+        "content": "كيف أتتبع طلبيتي؟"
+      },
+      {
+        "role": "assistant",
+        "content": "مرحباً! 😊\nيمكنك تتبع طلبك من خلال الدخول إلى حسابك على موقعنا، ثم النقر على قسم \"طلباتي\" أو \"مساحة العملاء\"، ومن هناك يمكنك رؤية حالة طلبك الحالي. إذا كنت بحاجة إلى مزيد من المساعدة، يمكنك التواصل معنا عبر البريد الإلكتروني support@hoodiewear.com. 📧"
+      },
+      {
+        "role": "user",
+        "content": "كيف يمكنني الحصول على رقم تتبع لطلبي؟"
+      },
+      {
+        "role": "assistant",
+        "content": "لم أجد معلومات دقيقة حول هذا الموضوع في قاعدة معرفتنا. يُرجى التواصل مع فريق الدعم البشري على **support@hoodiewear.com**. 😊"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-18 00:13",
+    "nb_messages": 2,
+    "messages": [
+      {
+        "role": "user",
+        "content": "je veux passer une commande a tunisie , c'est possible?"
+      },
+      {
+        "role": "assistant",
+        "content": "👋 Oui, c'est tout à fait possible ! Nous livrons en Tunisie. Les frais de port sont calculés automatiquement lors du passage en caisse et le délai de livraison est de 7 à 10 jours ouvrés. 📦\n\nVeuillez noter que des frais de douane peuvent s'appliquer selon la valeur du colis et la réglementation tunisienne. Nous recommandons de vérifier les règles douanières locales avant de passer commande. 📝\n\nSi vous avez d'autres questions ou besoin d'aide pour passer commande, n'hésitez pas à me demander ! 😊"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-18 00:13",
+    "nb_messages": 2,
+    "messages": [
+      {
+        "role": "user",
+        "content": "je veux passer une commande a tunisie , c'est possible?"
+      },
+      {
+        "role": "assistant",
+        "content": "👋 Oui, c'est tout à fait possible ! Nous livrons en Tunisie. Les frais de port sont calculés automatiquement lors du passage en caisse et le délai de livraison est de 7 à 10 jours ouvrés. 📦\n\nVeuillez noter que des frais de douane peuvent s'appliquer selon la valeur du colis et la réglementation tunisienne. Nous recommandons de vérifier les règles douanières locales avant de passer commande. 📝\n\nSi vous avez d'autres questions ou besoin d'aide pour passer commande, n'hésitez pas à me demander ! 😊"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-18 14:41",
+    "nb_messages": 4,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Quels sont les délais de livraison ?"
+      },
+      {
+        "role": "assistant",
+        "content": "📦 Nos délais de livraison sont de 3 à 5 jours ouvrés pour la Tunisie, 5 à 10 jours pour l'Europe, et 10 à 15 jours pour le reste du monde. 🕒️ Pour plus d'informations, n'hésitez pas à me poser d'autres questions ! 😊"
+      },
+      {
+        "role": "user",
+        "content": "Quels sont les frais de livraison pour chaque destination ?"
+      },
+      {
+        "role": "assistant",
+        "content": "📦 Malheureusement, je n'ai pas d'informations précises sur les frais de livraison pour chaque destination. Cependant, je peux vous dire que les frais de livraison international sont calculés à la commande, selon le pays et le poids de votre commande. 🕒️ Pour plus d'informations, je vous recommande de contacter notre équipe de support à l'adresse support@hoodiewear.com. Ils seront en mesure de vous fournir des détails plus précis sur les frais de livraison pour votre destination spécifique. 😊"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-18 15:09",
+    "nb_messages": 4,
+    "messages": [
+      {
+        "role": "user",
+        "content": "ما هي المقاسات المتاحة؟"
+      },
+      {
+        "role": "assistant",
+        "content": "لم أجد معلومات دقيقة حول هذا الموضوع في قاعدة معرفتنا. يُرجى التواصل مع فريق الدعم البشري على **support@hoodiewear.com**. 😊 "
+      },
+      {
+        "role": "user",
+        "content": "كيف يمكنني التواصل مع فريق الدعم البشري؟"
+      },
+      {
+        "role": "assistant",
+        "content": "لم أجد معلومات دقيقة حول هذا الموضوع في قاعدة معرفتنا. يُرجى التواصل مع فريق الدعم البشري على **support@hoodiewear.com**. 😊 "
+      }
+    ]
+  },
+  {
+    "date": "2026-04-18 15:09",
+    "nb_messages": 4,
+    "messages": [
+      {
+        "role": "user",
+        "content": "ما هي المقاسات المتاحة؟"
+      },
+      {
+        "role": "assistant",
+        "content": "لم أجد معلومات دقيقة حول هذا الموضوع في قاعدة معرفتنا. يُرجى التواصل مع فريق الدعم البشري على **support@hoodiewear.com**. 😊 "
+      },
+      {
+        "role": "user",
+        "content": "كيف يمكنني التواصل مع فريق الدعم البشري؟"
+      },
+      {
+        "role": "assistant",
+        "content": "لم أجد معلومات دقيقة حول هذا الموضوع في قاعدة معرفتنا. يُرجى التواصل مع فريق الدعم البشري على **support@hoodiewear.com**. 😊 "
+      }
+    ]
+  },
+  {
+    "date": "2026-04-18 19:01",
+    "nb_messages": 1,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Acceptez-vous les crypto-monnaies ?"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-18 19:01",
+    "nb_messages": 1,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Acceptez-vous les crypto-monnaies ?"
+      }
+    ]
+  }
+]

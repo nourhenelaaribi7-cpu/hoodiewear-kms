@@ -1,0 +1,57 @@
+[
+  {
+    "id": "proc_001",
+    "titre": "Procédure retour standard",
+    "question": "Quelle est la procédure de retour chez HoodieWear ?",
+    "reponse": "Étape 1 : Client contacte support@hoodiewear.com avec numéro commande. Étape 2 : Agent vérifie éligibilité (30 jours, article non porté). Étape 3 : Envoi étiquette retour. Étape 4 : Réception article. Étape 5 : Remboursement sous 5-7 jours.",
+    "tags": [
+      "retour",
+      "procédure",
+      "remboursement"
+    ],
+    "mots_cles": [
+      "retour",
+      "procédure",
+      "étapes",
+      "remboursement"
+    ],
+    "type": "procedure_interne"
+  },
+  {
+    "id": "proc_002",
+    "titre": "Gestion produit défectueux",
+    "question": "Comment gérer une réclamation pour produit défectueux ?",
+    "reponse": "Étape 1 : Client envoie photos du défaut par email. Étape 2 : Agent valide le défaut de fabrication. Étape 3 : Proposition remplacement ou remboursement. Étape 4 : Envoi étiquette retour gratuite. Étape 5 : Expédition remplacement ou remboursement sous 48h.",
+    "tags": [
+      "défaut",
+      "réclamation",
+      "procédure",
+      "qualité"
+    ],
+    "mots_cles": [
+      "défaut",
+      "défectueux",
+      "procédure",
+      "réclamation"
+    ],
+    "type": "procedure_interne"
+  },
+  {
+    "id": "proc_003",
+    "titre": "Procédure double prélèvement",
+    "question": "Que faire en cas de double prélèvement bancaire ?",
+    "reponse": "Étape 1 : Client envoie capture d'écran relevé bancaire. Étape 2 : Vérification dans le système de paiement Stripe. Étape 3 : Confirmation du double prélèvement. Étape 4 : Remboursement initié sous 24h. Étape 5 : Remboursement effectif sous 5-7 jours ouvrés selon la banque.",
+    "tags": [
+      "paiement",
+      "double_prélèvement",
+      "remboursement"
+    ],
+    "mots_cles": [
+      "double",
+      "prélèvement",
+      "remboursement",
+      "paiement"
+    ],
+    "type": "procedure_interne"
+  }
+]

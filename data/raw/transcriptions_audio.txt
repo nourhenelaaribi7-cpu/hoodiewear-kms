@@ -1,0 +1,33 @@
+Transcription Audio 1 - Agent Sarah - 12/01/2025
+Client : Bonjour, j'ai passé une commande il y a 5 jours et je n'ai toujours rien reçu.
+Agent : Bonjour ! Je comprends votre inquiétude. Pouvez-vous me donner votre numéro de commande ?
+Client : Oui c'est le HW-2025-4521.
+Agent : Je vérifie... Votre colis a été expédié hier avec DHL. Voici votre numéro de suivi : DHL-789456123. Vous recevrez votre commande dans 2 jours ouvrés.
+Client : Merci beaucoup !
+Résolution : Suivi de commande fourni. Délai respecté.
+
+Transcription Audio 2 - Agent Mohamed - 13/01/2025
+Client : Je veux retourner mon hoodie, il est trop grand.
+Agent : Pas de problème ! Vous avez 30 jours pour effectuer un retour. Connectez-vous à votre espace client, rubrique Mes commandes, puis cliquez sur Retourner un article.
+Client : Est-ce que le retour est gratuit ?
+Agent : Les frais de retour sont à votre charge, mais nous offrons un avoir ou remboursement complet sous 5 à 7 jours ouvrés après réception.
+Résolution : Procédure de retour expliquée. Client satisfait.
+
+Transcription Audio 3 - Agent Amira - 14/01/2025
+Client : Mon paiement a été refusé, qu'est-ce que je fais ?
+Agent : Vérifiez d'abord que les informations de votre carte sont correctes et que votre plafond n'est pas atteint. Vous pouvez aussi essayer PayPal comme alternative.
+Client : D'accord je vais essayer PayPal.
+Agent : Parfait ! Si le problème persiste, contactez votre banque ou notre support à support@hoodiewear.com.
+Résolution : Alternative de paiement proposée.
+
+Transcription Audio 4 - Agent Sarah - 15/01/2025
+Client : Est-ce que vous livrez en Tunisie ?
+Agent : Oui absolument ! Nous livrons dans plus de 30 pays dont la Tunisie. Les frais de port sont calculés automatiquement lors du passage en caisse. Le délai est de 7 à 10 jours ouvrés.
+Client : Super, merci !
+Résolution : Livraison internationale confirmée.
+
+Transcription Audio 5 - Agent Mohamed - 16/01/2025
+Client : J'ai reçu un article endommagé, que faire ?
+Agent : Nous sommes désolés pour ce désagrément. Prenez une photo du produit endommagé et envoyez-la à support@hoodiewear.com avec votre numéro de commande. Nous vous enverrons un remplacement sous 48 heures.
+Client : Je vais faire ça tout de suite.
+Résolution : Procédure article endommagé expliquée. Remplacement promis.

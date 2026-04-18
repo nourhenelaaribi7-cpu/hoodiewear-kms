@@ -1,0 +1,30 @@
+[
+  {
+    "date": "2026-04-17 23:54",
+    "question": "Puis-je choisir l'option de livraison express pour une commande internationale ?",
+    "answer": "Désolé, mais l'option de livraison express 24h n'est disponible que pour les commandes en France métropolitaine, pour les commandes passées avant 14h, avec un supplément de 4,99€. Pour les livraisons ",
+    "rating": "positive",
+    "sentiment": "neutre"
+  },
+  {
+    "date": "2026-04-17 23:58",
+    "question": "كيف يمكنني الحصول على رقم تتبع لطلبي؟",
+    "answer": "لم أجد معلومات دقيقة حول هذا الموضوع في قاعدة معرفتنا. يُرجى التواصل مع فريق الدعم البشري على **support@hoodiewear.com**. 😊",
+    "rating": "negative",
+    "sentiment": "neutre"
+  },
+  {
+    "date": "2026-04-18 14:41",
+    "question": "Quels sont les frais de livraison pour chaque destination ?",
+    "answer": "📦 Malheureusement, je n'ai pas d'informations précises sur les frais de livraison pour chaque destination. Cependant, je peux vous dire que les frais de livraison international sont calculés à la comm",
+    "rating": "negative",
+    "sentiment": "neutre"
+  },
+  {
+    "date": "2026-04-18 15:08",
+    "question": "ما هي المقاسات المتاحة؟",
+    "answer": "لم أجد معلومات دقيقة حول هذا الموضوع في قاعدة معرفتنا. يُرجى التواصل مع فريق الدعم البشري على **support@hoodiewear.com**. 😊 ",
+    "rating": "negative",
+    "sentiment": "neutre"
+  }
+]

@@ -1,0 +1,156 @@
+[
+  {
+    "id": "audio_001",
+    "source": "whisper_transcription",
+    "question": "Bonjour, je voudrais savoir quels sont vos délais de livraison standard pour la Tunisie. J'ai passé une commande il y a trois jours et je n'ai toujours pas reçu de confirmation d'expédition.",
+    "reponse": "Nos délais de livraison standard sont de 3 à 5 jours ouvrés pour la Tunisie. Vous recevrez un email de confirmation d'expédition avec un lien de suivi dès que votre colis sera pris en charge par notre transporteur.",
+    "tags": [
+      "livraison",
+      "délais",
+      "commande"
+    ],
+    "mots_cles": [
+      "livraison",
+      "délais",
+      "commande"
+    ],
+    "intent": "suivi_livraison",
+    "langue": "fr",
+    "methode": "whisper-large-v3"
+  },
+  {
+    "id": "audio_002",
+    "source": "whisper_transcription",
+    "question": "Bonjour, j'ai reçu mon hoodie mais la taille ne correspond pas à ce que j'avais commandé. Je voudrais procéder à un échange. Quelle est votre procédure de retour et est-ce que les frais de retour sont à ma charge ?",
+    "reponse": "Vous disposez de 30 jours après réception pour effectuer un retour. Les frais de retour sont à votre charge sauf en cas de défaut. Contactez-nous par email pour obtenir une étiquette de retour.",
+    "tags": [
+      "retour",
+      "échange",
+      "taille"
+    ],
+    "mots_cles": [
+      "retour",
+      "échange",
+      "taille"
+    ],
+    "intent": "retour_produit",
+    "langue": "fr",
+    "methode": "whisper-large-v3"
+  },
+  {
+    "id": "audio_003",
+    "source": "whisper_transcription",
+    "question": "Bonjour, je souhaite annuler ma commande passée ce matin. Est-ce encore possible ? Mon numéro de commande est le HW-2024-0892. J'ai changé d'avis sur la couleur.",
+    "reponse": "Vous pouvez annuler votre commande dans les 24 heures suivant la passation. Au-delà, si la commande est déjà expédiée, vous devrez effectuer un retour après réception.",
+    "tags": [
+      "annulation",
+      "commande",
+      "remboursement"
+    ],
+    "mots_cles": [
+      "annulation",
+      "commande",
+      "remboursement"
+    ],
+    "intent": "annulation_commande",
+    "langue": "fr",
+    "methode": "whisper-large-v3"
+  },
+  {
+    "id": "audio_004",
+    "source": "whisper_transcription",
+    "question": "Bonjour, j'ai un problème avec mon paiement. Ma carte a été débitée deux fois pour la même commande. Je voudrais être remboursé de la somme prélevée en double le plus rapidement possible.",
+    "reponse": "En cas de double prélèvement, notre équipe traite les remboursements sous 5 à 7 jours ouvrés. Veuillez nous envoyer une capture d'écran de vos relevés bancaires par email.",
+    "tags": [
+      "paiement",
+      "remboursement",
+      "double_prélèvement"
+    ],
+    "mots_cles": [
+      "paiement",
+      "remboursement",
+      "double_prélèvement"
+    ],
+    "intent": "probleme_paiement",
+    "langue": "fr",
+    "methode": "whisper-large-v3"
+  },
+  {
+    "id": "audio_005",
+    "source": "whisper_transcription",
+    "question": "Bonjour, je voudrais savoir comment entretenir mon hoodie pour qu'il garde sa qualité. Est-ce que je peux le mettre au sèche-linge ? À quelle température dois-je le laver ?",
+    "reponse": "Lavez votre hoodie à 30°C maximum, à l'envers. Évitez le sèche-linge pour préserver les fibres. Repassez à basse température sur l'envers. Ne pas utiliser d'eau de javel.",
+    "tags": [
+      "entretien",
+      "lavage",
+      "qualité"
+    ],
+    "mots_cles": [
+      "entretien",
+      "lavage",
+      "qualité"
+    ],
+    "intent": "entretien_produit",
+    "langue": "fr",
+    "methode": "whisper-large-v3"
+  },
+  {
+    "id": "audio_006",
+    "source": "whisper_transcription",
+    "question": "Bonjour, je n'arrive pas à me connecter à mon compte. J'ai oublié mon mot de passe et l'email de réinitialisation n'arrive pas dans ma boîte. Pouvez-vous m'aider à récupérer mon accès ?",
+    "reponse": "Pour récupérer votre mot de passe, cliquez sur Mot de passe oublié sur la page de connexion. Vérifiez aussi vos spams. Si le problème persiste, contactez-nous avec votre adresse email d'inscription.",
+    "tags": [
+      "compte",
+      "mot_de_passe",
+      "connexion"
+    ],
+    "mots_cles": [
+      "compte",
+      "mot_de_passe",
+      "connexion"
+    ],
+    "intent": "probleme_compte",
+    "langue": "fr",
+    "methode": "whisper-large-v3"
+  },
+  {
+    "id": "audio_007",
+    "source": "whisper_transcription",
+    "question": "Bonjour, est-ce que vous livrez en dehors de la Tunisie ? Je voudrais commander pour un ami qui habite en France. Est-ce que les prix sont les mêmes et quels sont les frais de livraison internationale ?",
+    "reponse": "Oui, nous livrons en France et dans toute l'Europe. Les délais sont de 5 à 10 jours ouvrés. Les frais de livraison internationale varient selon le pays et le poids de votre commande.",
+    "tags": [
+      "livraison_internationale",
+      "france",
+      "frais"
+    ],
+    "mots_cles": [
+      "livraison_internationale",
+      "france",
+      "frais"
+    ],
+    "intent": "livraison_internationale",
+    "langue": "fr",
+    "methode": "whisper-large-v3"
+  },
+  {
+    "id": "audio_008",
+    "source": "whisper_transcription",
+    "question": "Bonjour, j'ai reçu un hoodie avec un défaut de fabrication. La couture sur l'épaule gauche est décousue. Je voudrais un remplacement ou un remboursement complet. C'est inacceptable pour un article à ce prix.",
+    "reponse": "Nous sommes désolés pour ce désagrément. En cas de défaut de fabrication, nous prenons en charge le retour et vous proposons un remplacement ou un remboursement complet. Envoyez-nous des photos du défaut par email.",
+    "tags": [
+      "défaut",
+      "qualité",
+      "réclamation",
+      "remboursement"
+    ],
+    "mots_cles": [
+      "défaut",
+      "qualité",
+      "réclamation",
+      "remboursement"
+    ],
+    "intent": "produit_defectueux",
+    "langue": "fr",
+    "methode": "whisper-large-v3"
+  }
+]
