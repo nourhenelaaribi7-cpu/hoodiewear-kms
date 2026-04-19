@@ -1,0 +1,10 @@
+.env
+rag_env/
+chroma_db/
+__pycache__/
+*.pyc
+*.pycache
+data/feedback.json
+data/historique.json
+data/historique.json
+.streamlit/secrets.toml
