@@ -1,13 +1,10 @@
-# pages/7_KnowledgeGap.py — Version 3.0 avec boucle de correction fermée
+# pages/7_KnowledgeGap.py — Version 3.1 — Bug fix session_state keys
 """
 Page 7 — Knowledge Gap Detector & Auto-amélioration
 ====================================================
-Améliorations v3 :
-  - Affichage du Correction Rate en temps réel
-  - Score avant/après pour chaque lacune traitée
-  - Re-génération automatique si correction échoue
-  - Section "Lacunes prédictives" (module anticipatif)
-  - Tableau de bord des corrections loggées
+Fix v3.1 :
+  - Séparation stricte des clés widget (btn_*) et données (data_*)
+  - Suppression du conflit st.session_state key / widget key
 """
 
 import streamlit as st
@@ -17,6 +14,9 @@ import json
 import pandas as pd
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from src.auth import require_agent_or_admin
+user = require_agent_or_admin()
 
 from src.knowledge_gap import (
     get_all_gaps,
@@ -43,16 +43,12 @@ st.set_page_config(
 st.markdown("""
 <style>
 .health-card {
-    background: white;
-    border-radius: 14px;
-    padding: 18px 22px;
-    text-align: center;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    background: white; border-radius: 14px; padding: 18px 22px;
+    text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.07);
     border-top: 5px solid #e94560;
 }
 .health-number { font-size: 2.2rem; font-weight: 700; color: #e94560; }
 .health-label  { font-size: 0.82rem; color: #666; margin-top: 4px; }
-
 .correction-ok {
     background: #eafaf1; border: 1.5px solid #00cc66;
     border-radius: 10px; padding: 10px 14px; margin: 6px 0;
@@ -65,7 +61,6 @@ st.markdown("""
     background: #f0f4ff; border: 1.5px solid #3498db;
     border-radius: 10px; padding: 12px 16px; margin: 8px 0;
 }
-
 .seci-step {
     background: white; border-radius: 10px; padding: 14px;
     text-align: center; border: 1px solid #eee;
@@ -74,7 +69,6 @@ st.markdown("""
 .seci-icon  { font-size: 1.8rem; }
 .seci-title { font-weight: 600; margin: 6px 0 2px; font-size: 0.92rem; }
 .seci-desc  { font-size: 0.78rem; color: #888; }
-
 .badge-ouverts { background: #ffeaea; color: #c0392b;
                  padding: 3px 10px; border-radius: 12px;
                  font-size: 0.78rem; font-weight: 600; }
@@ -85,9 +79,498 @@ st.markdown("""
 .delta-neg { color: #c0392b; font-weight: 700; }
 </style>
 """, unsafe_allow_html=True)
+st.markdown("""
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
+<style>
+/* ── Base ── */
+html, body, [class*="css"] {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.stApp {
+    background: linear-gradient(135deg, #0f0c29 0%, #141428 50%, #0f0c29 100%);
+    color: #e8e6f0;
+    min-height: 100vh;
+}
+.block-container {
+    padding-top: 2rem;
+    max-width: 1200px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Sidebar ── */
+[data-testid="stSidebar"] {
+    background: rgba(15, 12, 41, 0.95) !important;
+    border-right: 1px solid rgba(167, 139, 250, 0.15) !important;
+}
+[data-testid="stSidebar"] * {
+    color: #c4b5fd !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+[data-testid="stSidebar"] .stMarkdown p,
+[data-testid="stSidebar"] label,
+[data-testid="stSidebar"] span {
+    color: #c4b5fd !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+}
+[data-testid="stSidebar"] [data-testid="stSidebarNav"] a {
+    color: #a78bfa !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px !important;
+    transition: background 0.2s !important;
+}
+[data-testid="stSidebar"] [data-testid="stSidebarNav"] a:hover {
+    background: rgba(167, 139, 250, 0.12) !important;
+}
+[data-testid="stSidebar"] hr {
+    border-color: rgba(167, 139, 250, 0.2) !important;
+}
+
+/* ── All text elements — lisibilité maximale ── */
+h1, h2, h3, h4, p, span, div, label, li {
+    color: #f0eeff;
+}
+.stMarkdown p {
+    color: #d4cfee !important;
+    font-size: 0.95rem !important;
+    line-height: 1.7 !important;
+}
+.stMarkdown strong {
+    color: #f5f3ff !important;
+    font-weight: 700 !important;
+}
+.stCaption, [data-testid="stCaptionContainer"] p {
+    color: #7c77a0 !important;
+    font-size: 0.8rem !important;
+}
+.stAlert p, [data-testid="stAlert"] p {
+    color: #1a1a2e !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+}
+
+/* ── Form labels ── */
+[data-testid="stForm"] label,
+.stTextArea label,
+.stTextInput label,
+.stToggle label {
+    color: #a78bfa !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+}
+
+/* ── Inputs & Textareas ── */
+.stTextArea textarea,
+.stTextInput input {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(167, 139, 250, 0.25) !important;
+    border-radius: 10px !important;
+    color: #f0eeff !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    caret-color: #a78bfa !important;
+}
+.stTextArea textarea:focus,
+.stTextInput input:focus {
+    border-color: rgba(167, 139, 250, 0.6) !important;
+    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.1) !important;
+}
+
+/* ── Buttons ── */
+.stButton > button {
+    background: linear-gradient(135deg, #7c3aed, #4f46e5) !important;
+    border: none !important;
+    border-radius: 10px !important;
+    color: #ffffff !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.02em !important;
+    padding: 0.65rem 1.4rem !important;
+    transition: opacity 0.2s, transform 0.15s !important;
+}
+.stButton > button:hover {
+    opacity: 0.9 !important;
+    transform: translateY(-1px) !important;
+}
+.stFormSubmitButton > button {
+    background: linear-gradient(135deg, #7c3aed, #4f46e5) !important;
+    border: none !important;
+    border-radius: 10px !important;
+    color: #ffffff !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 0.92rem !important;
+    font-weight: 700 !important;
+    padding: 0.65rem 1.4rem !important;
+    width: 100% !important;
+}
+
+/* ── Expander ── */
+[data-testid="stExpander"] {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(167, 139, 250, 0.15) !important;
+    border-radius: 12px !important;
+    margin-bottom: 8px !important;
+}
+[data-testid="stExpander"] summary {
+    color: #d4cfee !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    padding: 0.8rem 1rem !important;
+}
+[data-testid="stExpander"] summary:hover {
+    background: rgba(167, 139, 250, 0.06) !important;
+    border-radius: 12px !important;
+}
+
+/* ── Metrics (st.metric) ── */
+[data-testid="stMetric"] {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(167, 139, 250, 0.15) !important;
+    border-radius: 12px !important;
+    padding: 1rem !important;
+}
+[data-testid="stMetricLabel"] p {
+    color: #7c77a0 !important;
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+}
+[data-testid="stMetricValue"] {
+    color: #c4b5fd !important;
+    font-family: 'DM Mono', monospace !important;
+    font-size: 1.6rem !important;
+    font-weight: 700 !important;
+}
+
+/* ── Divider ── */
+hr {
+    border: none !important;
+    height: 1px !important;
+    background: linear-gradient(90deg, transparent, rgba(167,139,250,0.2) 30%, rgba(167,139,250,0.2) 70%, transparent) !important;
+    margin: 2rem 0 !important;
+}
+
+/* ── Spinner ── */
+.stSpinner p {
+    color: #a78bfa !important;
+    font-size: 0.88rem !important;
+}
+
+/* ── Info / Warning / Error boxes ── */
+[data-testid="stAlert"][data-baseweb="notification"] {
+    border-radius: 10px !important;
+    border-left-width: 4px !important;
+}
+
+/* ── Toggle ── */
+[data-testid="stToggle"] span {
+    color: #d4cfee !important;
+    font-size: 0.9rem !important;
+}
+
+/* ── Line chart ── */
+.stVegaLiteChart, .stArrowVegaLiteChart {
+    background: rgba(255,255,255,0.02) !important;
+    border-radius: 12px !important;
+    padding: 1rem !important;
+    border: 1px solid rgba(167, 139, 250, 0.12) !important;
+}
+
+/* ── Hide Streamlit chrome ── */
+#MainMenu, footer, header { visibility: hidden; }
+
+/* ══ Custom components ══ */
+
+/* Page header */
+.page-header {
+    padding: 2rem 0 1.8rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+.page-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #a78bfa, #60a5fa);
+    border-radius: 2px;
+}
+.eyebrow {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a78bfa;
+    margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 0.5rem;
+}
+.eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 18px; height: 2px;
+    background: #a78bfa;
+    border-radius: 1px;
+}
+.page-title {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #f5f3ff;
+    margin: 0 0 0.4rem;
+    line-height: 1;
+    background: linear-gradient(135deg, #f5f3ff 0%, #c4b5fd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.page-sub {
+    font-size: 0.88rem;
+    color: #6d6a8a;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Section label */
+.section-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #7c77a0;
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.6rem;
+}
+.section-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #a78bfa, #60a5fa);
+    flex-shrink: 0;
+}
+
+/* KPI Grid */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+.kpi-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.6rem 1.2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, background 0.2s;
+    text-align: center;
+}
+.kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(167,139,250,0.5), transparent);
+}
+.kpi-card.green::before { background: linear-gradient(90deg, transparent, rgba(52,211,153,0.6), transparent); }
+.kpi-card.red::before   { background: linear-gradient(90deg, transparent, rgba(251,113,133,0.6), transparent); }
+.kpi-card.amber::before { background: linear-gradient(90deg, transparent, rgba(251,191,36,0.6), transparent); }
+.kpi-card:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(167,139,250,0.25);
+}
+.kpi-num {
+    font-size: 3.2rem;
+    font-weight: 800;
+    font-family: 'DM Mono', monospace;
+    color: #c4b5fd;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+.kpi-num.green { color: #34d399; }
+.kpi-num.red   { color: #fb7185; }
+.kpi-num.amber { color: #fbbf24; }
+.kpi-lbl {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7c77a0;
+    margin-top: 8px;
+}
+
+/* Result card */
+.result-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(167,139,250,0.2);
+    border-radius: 16px;
+    border-left: 4px solid #34d399;
+    padding: 1.6rem;
+    margin-top: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+.result-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(52,211,153,0.4), transparent);
+}
+.result-card.fail {
+    border-left-color: #fb7185;
+}
+.result-card.fail::before {
+    background: linear-gradient(90deg, transparent, rgba(251,113,133,0.4), transparent);
+}
+.verdict-row {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 1.2rem;
+}
+.verdict-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.08em;
+    background: rgba(52,211,153,0.15);
+    color: #34d399;
+    border: 1px solid rgba(52,211,153,0.3);
+}
+.verdict-badge .material-icons-round { font-size: 15px; }
+.verdict-badge.fail {
+    background: rgba(251,113,133,0.15);
+    color: #fb7185;
+    border-color: rgba(251,113,133,0.3);
+}
+.verdict-score {
+    font-size: 1.6rem;
+    font-weight: 800;
+    font-family: 'DM Mono', monospace;
+    color: #34d399;
+}
+.verdict-score.fail { color: #fb7185; }
+.verdict-label {
+    font-size: 0.78rem;
+    color: #5a5578;
+    font-weight: 500;
+}
+
+/* Metric sub-boxes */
+.metric-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+.metric-box {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+}
+.metric-name {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7c77a0;
+    margin-bottom: 6px;
+}
+.metric-val {
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-family: 'DM Mono', monospace;
+    color: #34d399;
+}
+.metric-val.warn { color: #fbbf24; }
+.metric-val.fail { color: #fb7185; }
+.bar-bg {
+    background: rgba(255,255,255,0.07);
+    border-radius: 4px; height: 4px;
+    overflow: hidden; margin-top: 8px;
+}
+.bar-fg { height: 100%; border-radius: 4px; }
+.bar-pass { background: #34d399; }
+.bar-warn { background: #fbbf24; }
+.bar-fail { background: #fb7185; }
+
+/* RAGAS grid */
+.ragas-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.ragas-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    padding: 1.4rem 1rem;
+    text-align: center;
+    transition: border-color 0.2s;
+}
+.ragas-box:hover { border-color: rgba(167,139,250,0.3); }
+.ragas-val {
+    font-size: 1.9rem;
+    font-weight: 800;
+    font-family: 'DM Mono', monospace;
+    color: #a78bfa;
+}
+.ragas-lbl {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #5a5578;
+    margin-top: 6px;
+}
+
+/* Chip row */
+.chip-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+.chip {
+    background: rgba(167,139,250,0.1);
+    border: 1px solid rgba(167,139,250,0.2);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 0.72rem;
+    color: #9980fa;
+    font-weight: 500;
+}
+
+/* Form card */
+.form-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(167,139,250,0.15);
+    border-radius: 16px;
+    padding: 1.4rem;
+    position: relative;
+    overflow: hidden;
+}
+.form-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(167,139,250,0.4), transparent);
+}
+
+/* Divider custom */
+.custom-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(167,139,250,0.2) 30%, rgba(167,139,250,0.2) 70%, transparent);
+    margin: 2.2rem 0;
+}
+</style>
+""", unsafe_allow_html=True)
 # ── Titre ──────────────────────────────────────────────────────────────────────
-st.title("🧠 Knowledge Gap Detector v3.0")
+st.title("🧠 Knowledge Gap Detector v3.1")
 st.caption(
     "Détection · Génération IA · Boucle de correction FERMÉE · "
     "Correction Rate · Module prédictif · Cycle SECI"
@@ -117,10 +600,10 @@ with st.expander("📚 Cycle SECI — implémenté dans ce module", expanded=Fal
 st.divider()
 
 # ══════════════════════════════════════════════════════════════════════════════
-# SECTION 1 : KM Health Score — avec Correction Rate
+# SECTION 1 : KM Health Score
 # ══════════════════════════════════════════════════════════════════════════════
 st.subheader("🏥 KM Health Score")
-st.caption("Métrique multi-dimensionnelle. La fraîcheur est désormais basée sur le Correction Rate réel.")
+st.caption("Métrique multi-dimensionnelle basée sur le Correction Rate réel.")
 
 health = get_km_health_score()
 score  = health["score_global"]
@@ -144,36 +627,35 @@ with col_score:
 
 with col_dims:
     dims = [
-        ("🎯 Satisfaction client",       health["satisfaction"], "#e94560"),
-        ("📚 Couverture des sujets",     health["couverture"],   "#3498db"),
-        ("🔄 Fraîcheur (Correction Rate)", health["fraicheur"],  "#2ecc71"),
-        ("⚡ Réactivité KM",             health["reactivite"],   "#f39c12"),
+        ("🎯 Satisfaction client",          health["satisfaction"], "#e94560"),
+        ("📚 Couverture des sujets",        health["couverture"],   "#3498db"),
+        ("🔄 Fraîcheur (Correction Rate)",  health["fraicheur"],    "#2ecc71"),
+        ("⚡ Réactivité KM",               health["reactivite"],   "#f39c12"),
     ]
     for label, val, clr in dims:
         col_l, col_b = st.columns([1, 3])
         with col_l:
-            st.markdown(f"<small style='color:#555'>{label}</small>", unsafe_allow_html=True)
+            st.markdown(f"<small style='color:#555'>{label}</small>",
+                        unsafe_allow_html=True)
         with col_b:
             st.progress(min(1.0, val / 100), text=f"{val:.0f}%")
 
-# Métriques rapides — avec Correction Rate
 st.markdown("")
 m1, m2, m3, m4, m5, m6 = st.columns(6)
-m1.metric("Lacunes ouvertes",   health["nb_gaps_ouverts"])
-m2.metric("Lacunes traitées",   health["nb_gaps_traites"])
-m3.metric("Docs auto-générés",  health["nb_auto_docs"])
-m4.metric("Total feedbacks",    health["total_feedbacks"])
+m1.metric("Lacunes ouvertes",  health["nb_gaps_ouverts"])
+m2.metric("Lacunes traitées",  health["nb_gaps_traites"])
+m3.metric("Docs auto-générés", health["nb_auto_docs"])
+m4.metric("Total feedbacks",   health["total_feedbacks"])
 m5.metric("🎯 Correction Rate",
           f"{health['correction_rate']:.0f}%",
           delta=f"{health['nb_corrected']}/{health['nb_attempted']} corrigées")
 m6.metric("📈 Delta score moyen",
-          f"{health['avg_delta_score']:+.3f}",
-          help="Amélioration moyenne du score RAG après correction")
+          f"{health['avg_delta_score']:+.3f}")
 
 st.divider()
 
 # ══════════════════════════════════════════════════════════════════════════════
-# SECTION 2 : Lacunes prédictives — NOUVEAU
+# SECTION 2 : Lacunes prédictives
 # ══════════════════════════════════════════════════════════════════════════════
 st.subheader("🔮 Lacunes prédictives — Anticipation à 7 jours")
 st.caption(
@@ -277,10 +759,15 @@ else:
             st.success("🎉 Toutes les lacunes ont été traitées !")
         else:
             for gap in ouvertes:
-                lang_flag  = {"fr": "🇫🇷", "en": "🇬🇧", "ar": "🇹🇳"}.get(gap.get("langue", "fr"), "🌍")
+                gap_id     = gap["id"]
+                # ✅ CLÉ DONNÉES séparée de la clé widget
+                data_key   = f"data_{gap_id}"
+                lang_flag  = {"fr": "🇫🇷", "en": "🇬🇧", "ar": "🇹🇳"}.get(
+                    gap.get("langue", "fr"), "🌍")
                 freq       = gap.get("occurrences", 1)
                 type_badge = (
-                    "🔴 Feedback négatif" if gap.get("type") == "feedback_negatif"
+                    "🔴 Feedback négatif"
+                    if gap.get("type") == "feedback_negatif"
                     else f"🟡 Score RAG bas ({gap.get('score_rag', '?')})"
                 )
                 score_avant = gap.get("score_rag_avant")
@@ -296,85 +783,105 @@ else:
                         st.markdown("**Réponse actuelle insuffisante :**")
                         st.caption(gap["reponse_actuelle"])
 
-                    col_gen, col_skip = st.columns([2, 1])
-                    with col_gen:
-                        if st.button("🤖 Générer une réponse IA", key=f"gen_{gap['id']}",
-                                     type="primary", use_container_width=True):
-                            with st.spinner("Génération en cours..."):
-                                # Stocke le score avant pour la validation post-correction
-                                gap["score_rag_avant"] = gap.get("score_rag", 0.0) or 0.0
-                                new_entry = generate_answer_for_gap(gap, attempt=1)
-                                if new_entry:
-                                    st.session_state[f"gen_{gap['id']}"] = new_entry
-                                    st.success("✅ Réponse générée ! Vérifiez ci-dessous.")
-                                else:
-                                    st.error("Erreur de génération. Réessayez.")
+                    # ── Bouton Générer ─────────────────────────────────────
+                    # ✅ Clé widget = btn_gen_{gap_id}, sans collision avec data_key
+                    if st.button("🤖 Générer une réponse IA",
+                                 key=f"btn_gen_{gap_id}",
+                                 type="primary",
+                                 use_container_width=True):
+                        with st.spinner("Génération en cours..."):
+                            gap["score_rag_avant"] = gap.get("score_rag", 0.0) or 0.0
+                            new_entry = generate_answer_for_gap(gap, attempt=1)
+                            if new_entry:
+                                # ✅ Stocke dans data_key, PAS dans la clé widget
+                                st.session_state[data_key] = new_entry
+                                st.success("✅ Réponse générée ! Vérifiez ci-dessous.")
+                            else:
+                                st.error("Erreur de génération. Réessayez.")
 
-                    # Affiche la réponse générée
-                    gen_key = f"gen_{gap['id']}"
-                    if gen_key in st.session_state and isinstance(st.session_state[gen_key], dict):
-                        entry = st.session_state[gen_key]
+                    # ── Affiche la réponse générée ─────────────────────────
+                    if data_key in st.session_state and \
+                       isinstance(st.session_state[data_key], dict):
+
+                        entry   = st.session_state[data_key]
                         attempt = entry.get("attempt", 1)
 
                         if attempt > 1:
-                            st.warning(f"⚠️ Tentative {attempt}/{MAX_REGEN_ATTEMPTS} "
-                                       f"(la correction précédente n'a pas atteint le seuil)")
+                            st.warning(
+                                f"⚠️ Tentative {attempt}/{MAX_REGEN_ATTEMPTS} "
+                                f"(la correction précédente n'a pas atteint le seuil)"
+                            )
 
                         st.markdown("---")
                         st.markdown("**📝 Réponse générée par IA :**")
+
+                        # ✅ Clé widget text_area = edit_{gap_id}_{attempt}
                         new_answer = st.text_area(
                             "Modifiez si nécessaire :",
                             value=entry["reponse"],
-                            key=f"edit_{gap['id']}_{attempt}",
+                            key=f"edit_{gap_id}_{attempt}",
                             height=100
                         )
-                        entry["reponse"] = new_answer
+                        # Met à jour la réponse en mémoire si modifiée
+                        st.session_state[data_key]["reponse"] = new_answer
 
                         col_val, col_rej = st.columns(2)
+
                         with col_val:
-                            if st.button("✅ Valider & Indexer", key=f"val_{gap['id']}_{attempt}",
-                                         type="primary", use_container_width=True):
-                                with st.spinner("Indexation + validation du score..."):
-                                    result = approve_and_index_entry(entry)
+                            # ✅ Clé widget = btn_val_{gap_id}_{attempt}
+                            if st.button("✅ Valider & Indexer",
+                                         key=f"btn_val_{gap_id}_{attempt}",
+                                         type="primary",
+                                         use_container_width=True):
+                                with st.spinner("Indexation + validation score..."):
+                                    # Récupère la version potentiellement modifiée
+                                    entry_to_save = st.session_state[data_key]
+                                    result = approve_and_index_entry(entry_to_save)
+
                                     if result["success"]:
-                                        val = result["validation"]
-                                        delta_class = "delta-pos" if val["delta"] > 0 else "delta-neg"
-                                        delta_str   = f"{val['delta']:+.3f}"
+                                        val       = result["validation"]
+                                        delta_str = f"{val['delta']:+.3f}"
 
                                         if val["corrected"]:
                                             st.success(
                                                 f"🎉 Lacune corrigée ! "
-                                                f"Score : {val['score_before']} → {val['score_after']} "
-                                                f"(Δ {delta_str})"
+                                                f"Score : {val['score_before']} "
+                                                f"→ {val['score_after']} (Δ {delta_str})"
                                             )
                                             st.balloons()
                                         else:
                                             st.warning(
                                                 f"⚠️ Indexé mais score insuffisant. "
-                                                f"Score : {val['score_before']} → {val['score_after']} "
+                                                f"Score : {val['score_before']} "
+                                                f"→ {val['score_after']} "
                                                 f"(Δ {delta_str}) | Seuil : 0.55"
                                             )
+                                            # Re-génération automatique si nécessaire
                                             if result.get("needs_regen"):
-                                                st.info("💡 Re-génération automatique avec prompt renforcé...")
+                                                st.info("💡 Re-génération avec prompt renforcé...")
                                                 gap["score_rag_avant"] = val["score_after"]
                                                 regen = generate_answer_for_gap(gap, attempt=2)
                                                 if regen:
-                                                    st.session_state[gen_key] = regen
-                                                    st.info("🔄 Nouvelle version générée. Validez-la.")
+                                                    # ✅ Stocke dans data_key (pas de widget conflict)
+                                                    st.session_state[data_key] = regen
+                                                    st.info("🔄 Nouvelle version. Validez-la.")
                                                     st.rerun()
 
-                                        del st.session_state[gen_key]
+                                        # Nettoyage après validation
+                                        del st.session_state[data_key]
                                         st.rerun()
                                     else:
                                         st.error("Erreur lors de l'indexation.")
 
                         with col_rej:
-                            if st.button("❌ Rejeter", key=f"rej_{gap['id']}_{attempt}",
+                            # ✅ Clé widget = btn_rej_{gap_id}_{attempt}
+                            if st.button("❌ Rejeter",
+                                         key=f"btn_rej_{gap_id}_{attempt}",
                                          use_container_width=True):
-                                del st.session_state[gen_key]
+                                del st.session_state[data_key]
                                 st.rerun()
 
-    # ── Tab 2 : Lacunes traitées avec scores avant/après ──────────────────
+    # ── Tab 2 : Lacunes traitées ───────────────────────────────────────────
     with tab2:
         if not traitees:
             st.info("Aucune lacune traitée pour l'instant.")
@@ -386,7 +893,7 @@ else:
                 delta       = gap.get("delta_score")
 
                 if score_avant is not None and score_apres is not None:
-                    delta_str   = f"{delta:+.3f}" if delta is not None else "N/A"
+                    delta_str  = f"{delta:+.3f}" if delta is not None else "N/A"
                     status_icon = "✅" if correction else "⚠️"
                     score_info  = (
                         f" | Score: {score_avant} → {score_apres} "
@@ -397,8 +904,8 @@ else:
 
                 st.markdown(
                     f"✅ **{gap['question'][:80]}...**"
-                    f"<small style='color:#888'> — Traité le {gap.get('date_resolution', 'N/A')}"
-                    f"{score_info}</small>",
+                    f"<small style='color:#888'> — Traité le "
+                    f"{gap.get('date_resolution', 'N/A')}{score_info}</small>",
                     unsafe_allow_html=True
                 )
 
@@ -410,12 +917,13 @@ else:
         else:
             correction_info = get_correction_rate()
             c1, c2, c3, c4 = st.columns(4)
-            c1.metric("Corrections tentées", correction_info["nb_attempted"])
+            c1.metric("Corrections tentées",  correction_info["nb_attempted"])
             c2.metric("Corrections réussies", correction_info["nb_corrected"])
             c3.metric("Correction Rate",
                       f"{correction_info['correction_rate']:.0f}%")
-            c4.metric("Delta moyen",
-                      f"{correction_info['avg_delta_score']:+.3f}")
+            avg_delta_val = correction_info.get("avg_delta_score",
+                correction_info.get("avg_delta", 0.0))
+            c4.metric("Delta moyen", f"{avg_delta_val:+.3f}")
 
             st.markdown("---")
             df_log = pd.DataFrame(log)
@@ -436,14 +944,12 @@ else:
                 use_container_width=True
             )
 
-            # Export CSV du log
             csv = df_log.to_csv(index=False, encoding="utf-8")
             st.download_button(
                 "⬇️ Exporter le log des corrections (CSV)",
                 csv,
                 "correction_log.csv",
-                "text/csv",
-                use_container_width=False
+                "text/csv"
             )
 
 st.divider()
@@ -467,9 +973,9 @@ if not auto_docs:
     st.info("Aucune entrée auto-générée. Traitez une lacune ci-dessus.")
 else:
     st.success(f"✅ **{len(auto_docs)} entrée(s)** ajoutées automatiquement à la base.")
-
-    # Statistiques rapides sur les corrections
-    corrected_count = sum(1 for d in auto_docs if d.get("score_rag_apres", 0) >= 0.55)
+    corrected_count = sum(
+        1 for d in auto_docs if d.get("score_rag_apres", 0) >= 0.55
+    )
     st.caption(f"Dont {corrected_count} avec score RAG validé ≥ 0.55")
 
     for doc in auto_docs:
@@ -499,31 +1005,4 @@ else:
 
 st.divider()
 
-# ══════════════════════════════════════════════════════════════════════════════
-# SECTION 6 : Impact & Valeur ajoutée
-# ══════════════════════════════════════════════════════════════════════════════
-with st.expander("📈 Impact métier de ce module"):
-    col_a, col_b = st.columns(2)
-    with col_a:
-        st.markdown("""
-        **Avant (v2) :**
-        - ❌ Boucle ouverte : correction non vérifiée
-        - ❌ Fraîcheur = volume (circulaire)
-        - ❌ Groupement naïf par mots-clés
-        - ❌ Aucune anticipation des lacunes
-        - ❌ Aucun log des tentatives de correction
-        """)
-    with col_b:
-        st.markdown("""
-        **Après (v3) :**
-        - ✅ Score RAG mesuré avant ET après
-        - ✅ Correction Rate = métrique réelle
-        - ✅ Déduplication sémantique par embeddings
-        - ✅ Module prédictif sur 7 jours glissants
-        - ✅ Log complet avec delta et tentatives
-        """)
 
-st.caption(
-    "🧠 Knowledge Gap Detector v3.0 — HoodieWear Smart KMS | "
-    "Nonaka & Takeuchi (1995) SECI | Boucle de correction fermée"
-)

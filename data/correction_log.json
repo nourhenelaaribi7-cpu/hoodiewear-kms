@@ -1,0 +1,82 @@
+[
+  {
+    "gap_id": "gap_11676",
+    "question": "كيف أسترجع كلمة المرور؟",
+    "date": "2026-04-20 13:38",
+    "attempt": 1,
+    "score_before": 0.0,
+    "score_after": 0.331,
+    "delta": 0.331,
+    "corrected": false
+  },
+  {
+    "gap_id": "gap_11676",
+    "question": "كيف أسترجع كلمة المرور؟",
+    "date": "2026-04-20 14:00",
+    "attempt": 1,
+    "score_before": 0.0,
+    "score_after": 0.359,
+    "delta": 0.359,
+    "corrected": false
+  },
+  {
+    "gap_id": "gap_rt_35967",
+    "question": "Quelle est la capitale de l’Allemagne ?",
+    "date": "2026-04-20 14:01",
+    "attempt": 1,
+    "score_before": 0.378,
+    "score_after": 0.544,
+    "delta": 0.166,
+    "corrected": false
+  },
+  {
+    "gap_id": "gap_rt_20859",
+    "question": "Explique-moi l’intelligence artificielle",
+    "date": "2026-04-20 14:02",
+    "attempt": 1,
+    "score_before": 0.338,
+    "score_after": 0.538,
+    "delta": 0.2,
+    "corrected": false
+  },
+  {
+    "gap_id": "gap_62494",
+    "question": "كيف أسترجع كلمة المرور؟",
+    "date": "2026-04-21 12:35",
+    "attempt": 1,
+    "score_before": 0.0,
+    "score_after": 0.683,
+    "delta": 0.683,
+    "corrected": true
+  },
+  {
+    "gap_id": "gap_rt_99515",
+    "question": "Quelle est la capitale de l’Allemagne ?",
+    "date": "2026-04-21 12:35",
+    "attempt": 1,
+    "score_before": 0.378,
+    "score_after": 0.412,
+    "delta": 0.034,
+    "corrected": false
+  },
+  {
+    "gap_id": "gap_rt_99515",
+    "question": "Quelle est la capitale de l’Allemagne ?",
+    "date": "2026-04-21 12:53",
+    "attempt": 1,
+    "score_before": 0.378,
+    "score_after": 0.612,
+    "delta": 0.234,
+    "corrected": true
+  },
+  {
+    "gap_id": "gap_57525",
+    "question": "كيف أسترجع كلمة المرور؟",
+    "date": "2026-04-22 21:07",
+    "attempt": 1,
+    "score_before": 0.0,
+    "score_after": 0.723,
+    "delta": 0.723,
+    "corrected": true
+  }
+]

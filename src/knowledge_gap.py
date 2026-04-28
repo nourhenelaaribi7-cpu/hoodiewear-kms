@@ -2,27 +2,15 @@
 """
 Module d'Intelligence KM — Knowledge Gap Detector + Auto-amélioration
 ====================================================================
-Améliorations v2 :
-  1. Boucle de correction FERMÉE  : validate_correction() teste le score
-     RAG avant ET après indexation et stocke le delta.
-  2. Correction Rate              : % de lacunes réellement corrigées,
-     exposé dans get_km_health_score().
-  3. Regénération automatique    : si la correction échoue (score après
-     toujours bas), une 2e tentative est lancée avec un prompt renforcé.
-  4. Module prédictif            : get_predictive_gaps() analyse la
-     tendance des 7 derniers jours et signale les sujets émergents avant
-     qu'ils ne génèrent des feedbacks négatifs.
-  5. Formule fraicheur corrigée  : basée sur le Correction Rate réel,
-     non sur le volume de documents générés.
-  6. Déduplication sémantique   : utilise semantic_deduplicate_gaps()
-     du retriever au lieu du groupement par mots-clés.
-
-Basé sur Nonaka & Takeuchi (1995), modèle SECI.
+CORRECTIONS v3 :
+  - Toutes les écritures JSON utilisent _safe_json_write() (thread-safe)
+  - Imports nettoyés
 """
 
 import os
 import json
 import re
+import threading
 from datetime import datetime, timedelta
 from collections import Counter
 from groq import Groq
@@ -41,10 +29,32 @@ REALTIME_GAPS_FILE   = "data/potential_gaps_realtime.json"
 CORRECTION_LOG_FILE  = "data/correction_log.json"
 
 # ── Seuils ──────────────────────────────────────────────────────────────────────
-SCORE_LACUNE_SEUIL  = 0.40   # score RAG en-dessous duquel c'est une lacune
-SCORE_CORRECTED     = 0.55   # score RAG cible après correction
-MIN_FREQ_LACUNE     = 1      # dès la 1ère occurrence, on signale
-MAX_REGEN_ATTEMPTS  = 2      # nombre maximum de re-générations si correction échoue
+SCORE_LACUNE_SEUIL  = 0.40
+SCORE_CORRECTED     = 0.55
+MIN_FREQ_LACUNE     = 1
+MAX_REGEN_ATTEMPTS  = 2
+
+# ── Lock thread-safe ────────────────────────────────────────────────────────────
+_json_lock = threading.Lock()
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# UTILITAIRE — Écriture JSON thread-safe
+# ══════════════════════════════════════════════════════════════════════════════
+
+def _safe_json_write(filepath: str, data):
+    """Écriture thread-safe via fichier temporaire (opération atomique)."""
+    with _json_lock:
+        os.makedirs(os.path.dirname(filepath) if os.path.dirname(filepath) else ".", exist_ok=True)
+        tmp = filepath + ".tmp"
+        try:
+            with open(tmp, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+            os.replace(tmp, filepath)
+        except Exception as e:
+            if os.path.exists(tmp):
+                os.remove(tmp)
+            raise e
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -85,9 +95,7 @@ def load_gaps() -> list:
 
 
 def save_gaps(gaps: list):
-    os.makedirs("data", exist_ok=True)
-    with open(GAP_FILE, "w", encoding="utf-8") as f:
-        json.dump(gaps, f, ensure_ascii=False, indent=2)
+    _safe_json_write(GAP_FILE, gaps)
 
 
 def load_correction_log() -> list:
@@ -102,9 +110,7 @@ def load_correction_log() -> list:
 
 
 def save_correction_log(log: list):
-    os.makedirs("data", exist_ok=True)
-    with open(CORRECTION_LOG_FILE, "w", encoding="utf-8") as f:
-        json.dump(log, f, ensure_ascii=False, indent=2)
+    _safe_json_write(CORRECTION_LOG_FILE, log)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -112,10 +118,6 @@ def save_correction_log(log: list):
 # ══════════════════════════════════════════════════════════════════════════════
 
 def detect_gaps_from_feedbacks() -> list:
-    """
-    Analyse les feedbacks négatifs pour identifier les lacunes.
-    Retourne une liste de gaps enrichis triés par fréquence.
-    """
     feedbacks = load_feedbacks()
     negative  = [f for f in feedbacks if f.get("rating") == "negative"]
 
@@ -142,8 +144,7 @@ def detect_gaps_from_feedbacks() -> list:
 
     gaps = []
     for key, data in gap_map.items():
-        # Sentiment dominant
-        sentiment_counts = Counter(data["sentiments"])
+        sentiment_counts   = Counter(data["sentiments"])
         dominant_sentiment = sentiment_counts.most_common(1)[0][0]
 
         gaps.append({
@@ -166,14 +167,9 @@ def detect_gaps_from_feedbacks() -> list:
 
 
 def detect_gaps_from_low_scores() -> list:
-    """
-    Analyse l'historique + le fichier de tracking temps réel
-    pour détecter les questions avec score RAG bas.
-    """
     gaps = []
     seen = set()
 
-    # Source 1 : fichier de tracking temps réel (rag_chain.py → _track_potential_gap)
     if os.path.exists(REALTIME_GAPS_FILE):
         try:
             with open(REALTIME_GAPS_FILE, "r", encoding="utf-8") as f:
@@ -199,7 +195,6 @@ def detect_gaps_from_low_scores() -> list:
         except Exception:
             pass
 
-    # Source 2 : historique des conversations (messages avec avg_score stocké)
     history = load_history()
     for conv in history:
         for idx, msg in enumerate(conv.get("messages", [])):
@@ -227,50 +222,33 @@ def detect_gaps_from_low_scores() -> list:
 
 
 def get_all_gaps() -> list:
-    """
-    Fusionne toutes les sources de lacunes détectées et applique
-    la déduplication sémantique.
-    """
     from src.retriever import semantic_deduplicate_gaps
 
     gaps_fb    = detect_gaps_from_feedbacks()
     gaps_score = detect_gaps_from_low_scores()
 
-    # Fusion avec déduplication basique par clé normalisée
     existing_questions = {_normalize_question(g["question"]) for g in gaps_fb}
     for g in gaps_score:
         if _normalize_question(g["question"]) not in existing_questions:
             gaps_fb.append(g)
             existing_questions.add(_normalize_question(g["question"]))
 
-    # Déduplication sémantique (remplace le groupement naïf par mots-clés)
     try:
         all_gaps = semantic_deduplicate_gaps(gaps_fb, threshold=0.85)
     except Exception:
-        # Fallback si ChromaDB n'est pas disponible
         all_gaps = gaps_fb
 
     return all_gaps
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# 3. MODULE PRÉDICTIF — Anticiper les lacunes futures
+# 3. MODULE PRÉDICTIF
 # ══════════════════════════════════════════════════════════════════════════════
 
 def get_predictive_gaps(window_days: int = 7) -> list:
-    """
-    Analyse les tendances des derniers `window_days` jours.
-    Identifie les sujets dont la fréquence augmente mais dont le score
-    RAG moyen reste bas → lacune émergente avant d'avoir des feedbacks négatifs.
-
-    Returns:
-        list[dict] : lacunes prédites avec score de tendance et sujet.
-    """
     history   = load_history()
-    feedbacks = load_feedbacks()
     cutoff    = datetime.now() - timedelta(days=window_days)
 
-    # Collecte les questions récentes
     recent_questions = []
     for conv in history:
         try:
@@ -284,21 +262,19 @@ def get_predictive_gaps(window_days: int = 7) -> list:
                 recent_questions.append({
                     "question": msg["content"],
                     "date":     conv["date"],
-                    "score":    None     # sera rempli ci-dessous
                 })
 
     if not recent_questions:
         return []
 
-    # Catégorisation par sujet
     categories = {
-        "livraison":     ["livraison", "livrer", "délai", "expédition", "colis", "shipping", "delivery"],
-        "retour":        ["retour", "retourner", "échange", "rembours", "return", "refund"],
-        "taille":        ["taille", "tailles", "size", "xl", "xxl", "mesure", "guide"],
-        "paiement":      ["paiement", "payer", "carte", "paypal", "virement", "payment"],
-        "commande":      ["commande", "commander", "annuler", "suivre", "tracking", "order"],
-        "compte":        ["compte", "connexion", "mot de passe", "email", "login", "password"],
-        "produit":       ["hoodie", "qualité", "couleur", "défaut", "entretien", "laver"],
+        "livraison":  ["livraison", "livrer", "délai", "expédition", "colis", "shipping", "delivery"],
+        "retour":     ["retour", "retourner", "échange", "rembours", "return", "refund"],
+        "taille":     ["taille", "tailles", "size", "xl", "xxl", "mesure", "guide"],
+        "paiement":   ["paiement", "payer", "carte", "paypal", "virement", "payment"],
+        "commande":   ["commande", "commander", "annuler", "suivre", "tracking", "order"],
+        "compte":     ["compte", "connexion", "mot de passe", "email", "login", "password"],
+        "produit":    ["hoodie", "qualité", "couleur", "défaut", "entretien", "laver"],
     }
 
     topic_questions: dict[str, list] = {cat: [] for cat in categories}
@@ -309,14 +285,13 @@ def get_predictive_gaps(window_days: int = 7) -> list:
                 topic_questions[cat].append(item["question"])
                 break
 
-    # Calcul du score RAG moyen par sujet (sur un échantillon)
     from src.retriever import get_avg_score_for_query
 
     predictive = []
     for cat, questions in topic_questions.items():
         if len(questions) < 2:
             continue
-        sample = questions[:3]   # On limite les appels ChromaDB
+        sample = questions[:3]
         scores = []
         for q in sample:
             try:
@@ -329,14 +304,14 @@ def get_predictive_gaps(window_days: int = 7) -> list:
 
         if avg_score < SCORE_LACUNE_SEUIL and len(questions) >= 2:
             predictive.append({
-                "id":           f"pred_{cat}_{datetime.now().strftime('%Y%m%d')}",
-                "sujet":        cat,
-                "frequence_7j": len(questions),
+                "id":              f"pred_{cat}_{datetime.now().strftime('%Y%m%d')}",
+                "sujet":           cat,
+                "frequence_7j":    len(questions),
                 "score_rag_moyen": avg_score,
-                "type":         "predictif",
-                "statut":       "non_traité",
-                "question":     f"[PRÉDICTIF] Sujets émergents sur : {cat} ({len(questions)} questions récentes, score moyen {avg_score})",
-                "langue":       "fr",
+                "type":            "predictif",
+                "statut":          "non_traité",
+                "question":        f"[PRÉDICTIF] Sujets émergents : {cat} ({len(questions)} questions, score {avg_score})",
+                "langue":          "fr",
                 "questions_exemple": questions[:3]
             })
 
@@ -345,17 +320,13 @@ def get_predictive_gaps(window_days: int = 7) -> list:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# 4. GÉNÉRATION DE RÉPONSES (SECI : Combinaison)
+# 4. GÉNÉRATION DE RÉPONSES
 # ══════════════════════════════════════════════════════════════════════════════
 
 def _build_generation_prompt(question: str, langue: str,
                               reponse_actuelle: str,
                               attempt: int = 1) -> str:
-    """
-    Construit le prompt de génération.
-    attempt=2 → prompt renforcé si la 1ère correction a échoué.
-    """
-    lang_map = {"fr": "français", "en": "English", "ar": "العربية"}
+    lang_map   = {"fr": "français", "en": "English", "ar": "العربية"}
     lang_label = lang_map.get(langue, "français")
 
     base_context = """Contexte HoodieWear :
@@ -367,7 +338,7 @@ def _build_generation_prompt(question: str, langue: str,
 - Boutique : 100% en ligne, hoodiewear.com"""
 
     if attempt == 1:
-        instruction = f"""MISSION : Génère une réponse professionnelle et précise pour cette question client.
+        return f"""MISSION : Génère une réponse professionnelle pour cette question client HoodieWear.
 
 Question : "{question}"
 Réponse précédente insuffisante : "{reponse_actuelle}"
@@ -378,13 +349,13 @@ CONTRAINTES :
 - Réponds en {lang_label} uniquement
 - Maximum 3 phrases claires
 - Inclus les délais/prix/procédures spécifiques si pertinent
-- Ne dis jamais "je ne sais pas" — oriente toujours vers support@hoodiewear.com si incertain
+- Si incertain → oriente vers support@hoodiewear.com
 - Format JSON uniquement :
 {{"reponse": "...", "tags": ["tag1", "tag2"], "mots_cles": ["mot1", "mot2"]}}"""
     else:
-        instruction = f"""MISSION (2e tentative — sois encore plus précis) :
-La 1ère réponse générée n'a pas amélioré le score RAG. Reformule la réponse
-en utilisant des termes plus proches des questions clients habituelles.
+        return f"""MISSION (2e tentative) :
+La 1ère réponse n'a pas amélioré le score RAG. Reformule en utilisant des termes
+plus proches des questions clients habituelles.
 
 Question : "{question}"
 
@@ -392,25 +363,13 @@ Question : "{question}"
 
 CONTRAINTES RENFORCÉES :
 - Réponds en {lang_label}
-- Utilise exactement les mots-clés de la question dans ta réponse
-- Sois très explicite sur les délais, procédures et contacts
+- Utilise exactement les mots-clés de la question
+- Donne des délais, procédures et contacts précis
 - Format JSON uniquement :
 {{"reponse": "...", "tags": ["tag1", "tag2"], "mots_cles": ["mot1", "mot2", "mot3"]}}"""
 
-    return instruction
-
 
 def generate_answer_for_gap(gap: dict, attempt: int = 1) -> dict | None:
-    """
-    Utilise le LLM pour générer une réponse experte à une lacune détectée.
-
-    Args:
-        gap     : dict de la lacune
-        attempt : 1 = génération normale, 2 = prompt renforcé (re-génération)
-
-    Returns:
-        dict {question, reponse, tags, mots_cles, langue, gap_id} ou None.
-    """
     question         = gap.get("question", "")
     langue           = gap.get("langue", "fr")
     reponse_actuelle = gap.get("reponse_actuelle", "Aucune réponse fournie.")
@@ -426,38 +385,34 @@ def generate_answer_for_gap(gap: dict, attempt: int = 1) -> dict | None:
         )
 
         raw = response.choices[0].message.content.strip()
-
-        # Nettoyage du JSON
         raw = re.sub(r"```json\s*", "", raw)
         raw = re.sub(r"```\s*", "", raw)
-        raw = raw.strip()
 
-        # Extraction du premier objet JSON
         match = re.search(r'\{.*\}', raw, re.DOTALL)
         if not match:
             return None
 
-        parsed = json.loads(match.group())
-        reponse    = parsed.get("reponse", "").strip()
-        tags       = parsed.get("tags", _extract_tags(question))
-        mots_cles  = parsed.get("mots_cles", tags)
+        parsed    = json.loads(match.group())
+        reponse   = parsed.get("reponse", "").strip()
+        tags      = parsed.get("tags", _extract_tags(question))
+        mots_cles = parsed.get("mots_cles", tags)
 
         if not reponse or len(reponse) < 20:
             return None
 
         return {
-            "id":             f"auto_{abs(hash(question)) % 100000:05d}",
-            "gap_id":         gap.get("id", ""),
-            "question":       question,
-            "reponse":        reponse,
-            "tags":           tags,
-            "mots_cles":      mots_cles,
-            "langue":         langue,
-            "source":         "auto_generated",
-            "statut":         "en_attente",
-            "date_creation":  datetime.now().strftime("%Y-%m-%d %H:%M"),
+            "id":              f"auto_{abs(hash(question)) % 100000:05d}",
+            "gap_id":          gap.get("id", ""),
+            "question":        question,
+            "reponse":         reponse,
+            "tags":            tags,
+            "mots_cles":       mots_cles,
+            "langue":          langue,
+            "source":          "auto_generated",
+            "statut":          "en_attente",
+            "date_creation":   datetime.now().strftime("%Y-%m-%d %H:%M"),
             "score_rag_avant": gap.get("score_rag_avant"),
-            "attempt":        attempt
+            "attempt":         attempt
         }
 
     except Exception as e:
@@ -466,21 +421,10 @@ def generate_answer_for_gap(gap: dict, attempt: int = 1) -> dict | None:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# 5. BOUCLE DE CORRECTION FERMÉE — NOUVEAU
+# 5. BOUCLE DE CORRECTION FERMÉE
 # ══════════════════════════════════════════════════════════════════════════════
 
 def validate_correction(question: str, score_before: float) -> dict:
-    """
-    Teste si l'indexation d'un nouveau document a réellement amélioré
-    le score RAG pour la question donnée.
-
-    Returns:
-        dict avec keys:
-          score_before  : score RAG avant correction
-          score_after   : score RAG après correction (re-testé maintenant)
-          corrected     : bool — True si le score a dépassé SCORE_CORRECTED
-          delta         : score_after - score_before
-    """
     from src.retriever import get_avg_score_for_query
 
     score_after = get_avg_score_for_query(question, n_results=3)
@@ -495,7 +439,6 @@ def validate_correction(question: str, score_before: float) -> dict:
 
 
 def _log_correction(gap_id: str, question: str, validation: dict, attempt: int):
-    """Enregistre le résultat de chaque tentative de correction."""
     log = load_correction_log()
     log.append({
         "gap_id":       gap_id,
@@ -507,20 +450,12 @@ def _log_correction(gap_id: str, question: str, validation: dict, attempt: int):
         "delta":        validation["delta"],
         "corrected":    validation["corrected"]
     })
-    save_correction_log(log[-200:])   # garde les 200 derniers logs
+    save_correction_log(log[-200:])
 
 
 def get_correction_rate() -> dict:
-    """
-    Calcule le Correction Rate : % de lacunes réellement corrigées
-    après indexation (score RAG amélioré au-delà du seuil).
-
-    Returns:
-        dict : correction_rate, nb_corrected, nb_attempted, avg_delta
-    """
     log = load_correction_log()
 
-    # Un gap peut avoir plusieurs tentatives — on prend la dernière
     latest_per_gap: dict[str, dict] = {}
     for entry in log:
         gid = entry.get("gap_id", entry.get("question", ""))
@@ -534,10 +469,10 @@ def get_correction_rate() -> dict:
             "avg_delta":       0.0
         }
 
-    all_entries    = list(latest_per_gap.values())
-    nb_corrected   = sum(1 for e in all_entries if e.get("corrected"))
-    nb_attempted   = len(all_entries)
-    avg_delta      = round(
+    all_entries  = list(latest_per_gap.values())
+    nb_corrected = sum(1 for e in all_entries if e.get("corrected"))
+    nb_attempted = len(all_entries)
+    avg_delta    = round(
         sum(e.get("delta", 0) for e in all_entries) / nb_attempted, 3
     )
 
@@ -554,17 +489,7 @@ def get_correction_rate() -> dict:
 # ══════════════════════════════════════════════════════════════════════════════
 
 def approve_and_index_entry(entry: dict) -> dict:
-    """
-    Valide une entrée générée, l'indexe dans ChromaDB, puis valide
-    automatiquement que la correction a bien amélioré le score RAG.
-
-    Si la correction échoue, une 2e tentative de génération est proposée.
-
-    Returns:
-        dict avec keys: success, validation, needs_regen
-    """
     try:
-        # 1. Sauvegarde dans le fichier FAQ auto-généré
         existing = []
         if os.path.exists(GAP_FAQ_FILE):
             try:
@@ -576,21 +501,17 @@ def approve_and_index_entry(entry: dict) -> dict:
 
         entry["statut"]          = "validé"
         entry["date_validation"] = datetime.now().strftime("%Y-%m-%d %H:%M")
-
         existing.append(entry)
-        os.makedirs("data/raw", exist_ok=True)
-        with open(GAP_FAQ_FILE, "w", encoding="utf-8") as f:
-            json.dump(existing, f, ensure_ascii=False, indent=2)
 
-        # 2. Indexation directe dans ChromaDB
+        os.makedirs("data/raw", exist_ok=True)
+        _safe_json_write(GAP_FAQ_FILE, existing)
+
         _index_single_entry(entry)
 
-        # 3. Validation post-correction (boucle FERMÉE)
         score_before = entry.get("score_rag_avant") or 0.0
         validation   = validate_correction(entry["question"], score_before)
         attempt      = entry.get("attempt", 1)
 
-        # 4. Log de la correction
         _log_correction(
             gap_id=entry.get("gap_id", entry["id"]),
             question=entry["question"],
@@ -598,7 +519,6 @@ def approve_and_index_entry(entry: dict) -> dict:
             attempt=attempt
         )
 
-        # 5. Mise à jour du gap avec les scores avant/après
         _update_gap_scores(
             gap_id=entry.get("gap_id", ""),
             score_before=score_before,
@@ -606,13 +526,12 @@ def approve_and_index_entry(entry: dict) -> dict:
             corrected=validation["corrected"]
         )
 
-        # 6. Si correction réussie → marquer le gap comme traité
         if validation["corrected"]:
             _mark_gap_as_resolved(entry.get("gap_id", ""))
 
         print(f"✅ Indexé : {entry['question'][:60]}...")
         print(f"   Score avant: {validation['score_before']} → après: {validation['score_after']} "
-              f"| Corrigé: {validation['corrected']} | Delta: {validation['delta']:+.3f}")
+              f"| Corrigé: {validation['corrected']}")
 
         return {
             "success":      True,
@@ -626,7 +545,6 @@ def approve_and_index_entry(entry: dict) -> dict:
 
 
 def _index_single_entry(entry: dict):
-    """Indexe un seul document dans ChromaDB sans réindexer tout."""
     from src.indexer import get_collection
 
     collection = get_collection()
@@ -641,14 +559,14 @@ def _index_single_entry(entry: dict):
             "keywords":       str(entry.get("mots_cles", [])),
             "auto_generated": "true",
             "date":           entry.get("date_creation", ""),
-            "attempt":        str(entry.get("attempt", 1))
+            "attempt":        str(entry.get("attempt", 1)),
+            "doc_id":         doc_id,    # NOUVEAU : pour exclusion dans le scoring
         }],
         ids=[doc_id]
     )
 
 
 def _mark_gap_as_resolved(gap_id: str):
-    """Marque un gap comme résolu dans knowledge_gaps.json."""
     gaps = load_gaps()
     for g in gaps:
         if g.get("id") == gap_id:
@@ -659,7 +577,6 @@ def _mark_gap_as_resolved(gap_id: str):
 
 def _update_gap_scores(gap_id: str, score_before: float,
                         score_after: float, corrected: bool):
-    """Met à jour les scores avant/après dans knowledge_gaps.json."""
     gaps = load_gaps()
     for g in gaps:
         if g.get("id") == gap_id:
@@ -671,21 +588,10 @@ def _update_gap_scores(gap_id: str, score_before: float,
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# 7. KM HEALTH SCORE — Formule corrigée
+# 7. KM HEALTH SCORE
 # ══════════════════════════════════════════════════════════════════════════════
 
 def get_km_health_score() -> dict:
-    """
-    Calcule le score de santé de la base de connaissances.
-
-    Dimensions (pondération) :
-      1. Satisfaction client   (35%) : taux de feedbacks positifs
-      2. Couverture sujets     (30%) : inverse du nb de lacunes ouvertes
-      3. Fraîcheur / qualité   (15%) : Correction Rate réel (remplace le volume)
-      4. Réactivité KM         (20%) : % de gaps traités
-
-    Chaque dimension est normalisée sur 100.
-    """
     feedbacks       = load_feedbacks()
     gaps            = get_all_gaps()
     correction_info = get_correction_rate()
@@ -693,26 +599,19 @@ def get_km_health_score() -> dict:
     total_fb  = len(feedbacks)
     positifs  = len([f for f in feedbacks if f.get("rating") == "positive"])
 
-    # Dim 1 : Satisfaction (0-100)
     satisfaction = (positifs / total_fb * 100) if total_fb > 0 else 50
 
-    # Dim 2 : Couverture (0-100)
     nb_gaps    = len(gaps)
     nb_traites = len([g for g in gaps if g.get("statut") == "traité"])
     nb_ouverts = nb_gaps - nb_traites
     couverture = max(0.0, 100.0 - nb_ouverts * 12) if nb_ouverts > 0 else 100.0
 
-    # Dim 3 : Fraîcheur = Correction Rate réel (0-100)
-    # Avant : basé sur len(auto_docs) * 20 → circulaire et trompeur
-    # Maintenant : % de lacunes réellement corrigées avec delta score positif
     fraicheur = correction_info["correction_rate"]
     if correction_info["nb_attempted"] == 0:
-        fraicheur = 50.0    # valeur neutre si aucune correction tentée
+        fraicheur = 50.0
 
-    # Dim 4 : Réactivité (0-100)
     reactivite = (nb_traites / nb_gaps * 100) if nb_gaps > 0 else 100.0
 
-    # Score global pondéré
     score_global = round(
         satisfaction * 0.35 +
         couverture   * 0.30 +
@@ -720,7 +619,6 @@ def get_km_health_score() -> dict:
         reactivite   * 0.20
     , 1)
 
-    # Compte les docs auto-générés pour affichage
     auto_docs = []
     if os.path.exists(GAP_FAQ_FILE):
         try:
@@ -752,7 +650,6 @@ def get_km_health_score() -> dict:
 # ══════════════════════════════════════════════════════════════════════════════
 
 def get_topic_distribution() -> dict:
-    """Analyse la distribution des sujets dans les questions posées."""
     history   = load_history()
     feedbacks = load_feedbacks()
 
@@ -765,14 +662,14 @@ def get_topic_distribution() -> dict:
         all_questions.append(fb.get("question", ""))
 
     categories = {
-        "livraison":     ["livraison", "livrer", "délai", "expédition", "colis", "shipping", "delivery", "شحن", "توصيل"],
-        "retour":        ["retour", "retourner", "échange", "rembours", "return", "refund", "إرجاع", "استرداد"],
-        "taille":        ["taille", "tailles", "size", "xl", "xxl", "mesure", "guide", "مقاس", "قياس"],
-        "paiement":      ["paiement", "payer", "carte", "paypal", "virement", "payment", "دفع", "بطاقة"],
-        "commande":      ["commande", "commander", "annuler", "suivre", "tracking", "order", "طلب", "تتبع"],
-        "compte":        ["compte", "connexion", "mot de passe", "email", "login", "password", "حساب", "كلمة"],
-        "produit":       ["hoodie", "qualité", "couleur", "défaut", "entretien", "laver", "منتج", "جودة"],
-        "autre":         []
+        "livraison": ["livraison", "livrer", "délai", "expédition", "colis", "shipping", "delivery", "شحن", "توصيل"],
+        "retour":    ["retour", "retourner", "échange", "rembours", "return", "refund", "إرجاع", "استرداد"],
+        "taille":    ["taille", "tailles", "size", "xl", "xxl", "mesure", "guide", "مقاس", "قياس"],
+        "paiement":  ["paiement", "payer", "carte", "paypal", "virement", "payment", "دفع", "بطاقة"],
+        "commande":  ["commande", "commander", "annuler", "suivre", "tracking", "order", "طلب", "تتبع"],
+        "compte":    ["compte", "connexion", "mot de passe", "email", "login", "password", "حساب", "كلمة"],
+        "produit":   ["hoodie", "qualité", "couleur", "défaut", "entretien", "laver", "منتج", "جودة"],
+        "autre":     []
     }
 
     counts = {cat: 0 for cat in categories}
@@ -799,16 +696,14 @@ def get_topic_distribution() -> dict:
 # ══════════════════════════════════════════════════════════════════════════════
 
 def _normalize_question(q: str) -> str:
-    """Normalise une question pour le regroupement (fallback sans embeddings)."""
     q = q.lower().strip()
     q = re.sub(r'[^\w\s]', '', q)
     q = re.sub(r'\s+', ' ', q)
-    words = [w for w in q.split() if len(w) > 2][:8]   # 8 mots au lieu de 6
+    words = [w for w in q.split() if len(w) > 2][:8]
     return " ".join(words)
 
 
 def _detect_lang_simple(text: str) -> str:
-    """Détection de langue rapide (sans dépendance externe)."""
     arabic_chars = sum(1 for c in text if '\u0600' <= c <= '\u06FF')
     if arabic_chars > 2:
         return "ar"
@@ -822,7 +717,6 @@ def _detect_lang_simple(text: str) -> str:
 
 
 def _extract_tags(question: str) -> list:
-    """Extrait automatiquement des tags depuis une question."""
     tag_map = {
         "livraison":     ["livraison", "livrer", "délai", "expédition", "delivery", "shipping", "توصيل"],
         "retour":        ["retour", "rembours", "échange", "return", "refund", "إرجاع"],

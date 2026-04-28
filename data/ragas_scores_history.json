@@ -1,0 +1,46 @@
+[
+  {
+    "faithfulness": 0.0,
+    "answer_relevancy": 0.7334,
+    "context_precision": 1.0,
+    "context_recall": 0.0,
+    "ragas_score": 0.4334,
+    "nb_questions": 20.0,
+    "nb_failed": 0.0,
+    "timestamp": "2026-04-26 12:54",
+    "date": "2026-04-26"
+  },
+  {
+    "faithfulness": 0.0,
+    "answer_relevancy": 0.0,
+    "context_precision": 0.0,
+    "context_recall": 0.0,
+    "ragas_score": 0.0,
+    "nb_questions": 20.0,
+    "nb_failed": 0.0,
+    "timestamp": "2026-04-26 18:29",
+    "date": "2026-04-26"
+  },
+  {
+    "faithfulness": 0.0,
+    "answer_relevancy": 0.7705,
+    "context_precision": 0.0,
+    "context_recall": 0.0,
+    "ragas_score": 0.1926,
+    "nb_questions": 20.0,
+    "nb_failed": 0.0,
+    "timestamp": "2026-04-28 14:44",
+    "date": "2026-04-28"
+  },
+  {
+    "faithfulness": 0.0,
+    "answer_relevancy": 0.0,
+    "context_precision": 0.0,
+    "context_recall": 0.0,
+    "ragas_score": 0.0,
+    "nb_questions": 20.0,
+    "nb_failed": 0.0,
+    "timestamp": "2026-04-28 15:13",
+    "date": "2026-04-28"
+  }
+]

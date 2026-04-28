@@ -1,0 +1,72 @@
+[
+  {
+    "id": "hw_001",
+    "nom": "Classic Hoodie",
+    "description": "Notre hoodie signature, coupe droite confortable pour tous les jours.",
+    "prix": 89,
+    "nouveaute": false,
+    "matiere": "80% coton, 20% polyester",
+    "couleurs_disponibles": ["noir", "blanc", "gris", "navy", "rouge", "vert"],
+    "tailles_disponibles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "designs_disponibles": ["uni", "logo_poitrine", "logo_dos", "texte_personnalise"],
+    "image_placeholder": "classic",
+    "rating": 4.8,
+    "avis": 342
+  },
+  {
+    "id": "hw_002",
+    "nom": "Oversized Hoodie",
+    "description": "Coupe oversize tendance, parfait pour un look streetwear décontracté.",
+    "prix": 99,
+    "nouveaute": true,
+    "matiere": "100% coton bio",
+    "couleurs_disponibles": ["noir", "beige", "marron", "bleu_ciel", "rose"],
+    "tailles_disponibles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "designs_disponibles": ["uni", "broderie_poitrine", "print_dos", "texte_personnalise"],
+    "image_placeholder": "oversized",
+    "rating": 4.9,
+    "avis": 218
+  },
+  {
+    "id": "hw_003",
+    "nom": "Zip Hoodie",
+    "description": "Hoodie zippé polyvalent, idéal pour les demi-saisons.",
+    "prix": 109,
+    "nouveaute": true,
+    "matiere": "75% coton, 25% polyester recyclé",
+    "couleurs_disponibles": ["noir", "gris", "navy", "bordeaux", "kaki"],
+    "tailles_disponibles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "designs_disponibles": ["uni", "logo_poitrine", "bandes_laterales", "texte_personnalise"],
+    "image_placeholder": "zip",
+    "rating": 4.7,
+    "avis": 156
+  },
+  {
+    "id": "hw_004",
+    "nom": "Crop Hoodie",
+    "description": "Version courte tendance, parfaite pour un style moderne et féminin.",
+    "prix": 79,
+    "nouveaute": false,
+    "matiere": "85% coton, 15% élasthanne",
+    "couleurs_disponibles": ["blanc", "rose", "lilas", "noir", "menthe"],
+    "tailles_disponibles": ["XS", "S", "M", "L", "XL"],
+    "designs_disponibles": ["uni", "broderie_poitrine", "print_poitrine", "texte_personnalise"],
+    "image_placeholder": "crop",
+    "rating": 4.6,
+    "avis": 89
+  },
+  {
+    "id": "hw_005",
+    "nom": "Premium Hoodie",
+    "description": "Notre modèle haut de gamme, finitions luxueuses et tissu épais.",
+    "prix": 149,
+    "nouveaute": true,
+    "matiere": "100% coton peigné 400g",
+    "couleurs_disponibles": ["noir", "anthracite", "blanc_casse", "caramel"],
+    "tailles_disponibles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "designs_disponibles": ["uni", "broderie_poitrine", "broderie_dos", "texte_personnalise"],
+    "image_placeholder": "premium",
+    "rating": 5.0,
+    "avis": 67
+  }
+]

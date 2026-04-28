@@ -1,0 +1,127 @@
+[
+  {
+    "question": "Quelle est la capitale de l’Allemagne ?",
+    "score_rag": 0.378,
+    "answer": "",
+    "langue": "french",
+    "date": "2026-04-20 13:29",
+    "statut": "traité_auto",
+    "date_resolution": "2026-04-20 13:33"
+  },
+  {
+    "question": "Explique-moi l’intelligence artificielle",
+    "score_rag": 0.338,
+    "answer": "",
+    "langue": "french",
+    "date": "2026-04-20 13:30",
+    "statut": "traité_auto",
+    "date_resolution": "2026-04-20 13:33"
+  },
+  {
+    "question": "How can I track my order?",
+    "score_rag": 0.0,
+    "answer": "Information not available. Please contact **support@hoodiewear.com** 😊",
+    "langue": "english",
+    "date": "2026-04-20 13:37",
+    "statut": "traité_auto",
+    "date_resolution": "2026-04-20 15:53"
+  },
+  {
+    "question": "كيف أسترجع كلمة المرور؟",
+    "score_rag": 0.0,
+    "answer": "المعلومات غير متوفرة. تواصل مع **support@hoodiewear.com** 😊",
+    "langue": "arabic",
+    "date": "2026-04-20 13:37",
+    "statut": "traité_auto",
+    "date_resolution": "2026-04-20 15:53"
+  },
+  {
+    "question": "Quels modes de paiement accepte HoodieWear ?",
+    "score_rag": 0.339,
+    "answer": "Je suis désolé, mais je n'ai pas trouvé d'informations sur les modes de paiement acceptés par HoodieWear dans les documents fournis. Pour obtenir cett",
+    "langue": "french",
+    "date": "2026-04-20 15:55",
+    "statut": "traité_auto",
+    "date_resolution": "2026-04-21 12:37"
+  },
+  {
+    "question": "Comment retourner un article ?",
+    "score_rag": 0.346,
+    "answer": "Pour retourner un article, vous disposez de 30 jours après la réception de votre commande. Assurez-vous que l'article est en bon état et en portée. Po",
+    "langue": "french",
+    "date": "2026-04-22 21:05",
+    "statut": "non_traité"
+  },
+  {
+    "question": "Livrez-vous à l'international ?",
+    "score_rag": 0.353,
+    "answer": "Oui, nous livrons à l'international. Les délais de livraison pour les commandes internationales sont de 10 à 15 jours. Pour plus d'informations, vous ",
+    "langue": "french",
+    "date": "2026-04-22 21:06",
+    "statut": "non_traité"
+  },
+  {
+    "question": "Comment laver mon hoodie ?",
+    "score_rag": 0.337,
+    "answer": "Désolé, mais je n'ai pas trouvé d'informations spécifiques sur la façon de laver votre hoodie dans les documents fournis. Pour obtenir des conseils pr",
+    "langue": "french",
+    "date": "2026-04-22 21:06",
+    "statut": "non_traité"
+  },
+  {
+    "question": "Livrez-vous dans toute la Tunisie ?",
+    "score_rag": 0.397,
+    "answer": "Oui, nous livrons dans toute la Tunisie. Les délais de livraison pour la Tunisie sont de 3 à 5 jours ouvrés. Si vous avez besoin de plus d'information",
+    "langue": "french",
+    "date": "2026-04-25 19:56",
+    "statut": "non_traité"
+  },
+  {
+    "question": "J'ai reçu un article défectueux, que faire ?",
+    "score_rag": 0.332,
+    "answer": "Désolé d'apprendre que vous avez reçu un article défectueux. Pour résoudre ce problème rapidement, pouvez-vous nous fournir plus de détails sur le pro",
+    "langue": "french",
+    "date": "2026-04-25 19:56",
+    "statut": "non_traité"
+  },
+  {
+    "question": "Ma carte a été débitée deux fois, que faire ?",
+    "score_rag": 0.302,
+    "answer": "Bonjour, nous sommes désolés d'apprendre que votre carte a été débitée deux fois. Pour résoudre ce problème, nous vous recommandons de contacter notre",
+    "langue": "french",
+    "date": "2026-04-25 19:56",
+    "statut": "non_traité"
+  },
+  {
+    "question": "Comment choisir ma taille de hoodie ?",
+    "score_rag": 0.365,
+    "answer": "Pour choisir votre taille de hoodie, nous vous recommandons de vous référer à notre tableau de tailles disponible sur notre site web hoodiewear.com. V",
+    "langue": "french",
+    "date": "2026-04-25 19:56",
+    "statut": "non_traité"
+  },
+  {
+    "question": "Quelles tailles proposez-vous ?",
+    "score_rag": 0.0,
+    "answer": "Information non disponible dans notre base. Contactez **support@hoodiewear.com** 😊",
+    "langue": "french",
+    "date": "2026-04-25 19:56",
+    "statut": "non_traité"
+  },
+  {
+    "question": "À quelle température laver mon hoodie ?",
+    "score_rag": 0.386,
+    "answer": "Désolé, mais je n'ai pas trouvé d'information spécifique sur la température de lavage pour les hoodies dans les documents fournis. Pour obtenir des co",
+    "langue": "french",
+    "date": "2026-04-25 19:56",
+    "statut": "non_traité"
+  },
+  {
+    "question": "Puis-je mettre mon hoodie HoodieWear au sèche-linge ?",
+    "score_rag": 0.385,
+    "answer": "Non, il est recommandé de sécher votre hoodie HoodieWear à plat pour conserver sa forme. Cela est indiqué dans notre guide d'entretien pour les produi",
+    "langue": "french",
+    "date": "2026-04-25 19:56",
+    "statut": "non_traité"
+  }
+]

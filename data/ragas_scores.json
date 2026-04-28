@@ -1,98 +1,11 @@
 {
-  "date": "2026-04-18 18:55",
-  "timestamp": "2026-04-18 18:55",
-  "nb_questions": 7,
-  "nb_success": 7,
-  "faithfulness": 0.614,
-  "answer_relevancy": 0.671,
-  "context_precision": 0.614,
-  "completeness": 0.543,
-  "global_score": 0.611,
-  "ragas_score": 0.611,
-  "details": [
-    {
-      "question": "Quels sont les délais de livraison ?",
-      "answer": "Nos délais de livraison sont de 3 à 5 jours ouvrés pour la Tunisie, 5 à 10 jours pour l'Europe, et 10 à 15 jours pour le reste du monde. 😊",
-      "ground_truth": "Les délais de livraison sont de 3 à 5 jours ouvrés.",
-      "nb_sources": 5,
-      "avg_rag_score": 0.59,
-      "faithfulness": 1.0,
-      "answer_relevancy": 0.9,
-      "context_precision": 0.8,
-      "completeness": 0.8,
-      "global_score": 0.875
-    },
-    {
-      "question": "Comment retourner un article ?",
-      "answer": "Pour retourner un article, vous devez envoyer un email à support@hoodiewear.com avec votre numéro de commande. Vous avez 30 jours après réception de la commande pour effectuer un retour. Les articles doivent être non portés avec étiquettes intactes. Vous pouvez également suivre la procédure de retou",
-      "ground_truth": "Vous pouvez retourner un article sous 30 jours après réception.",
-      "nb_sources": 5,
-      "avg_rag_score": 0.606,
-      "faithfulness": 0.8,
-      "answer_relevancy": 0.9,
-      "context_precision": 1.0,
-      "completeness": 1.0,
-      "global_score": 0.925
-    },
-    {
-      "question": "Quels modes de paiement acceptez-vous ?",
-      "answer": "Je n'ai pas trouvé d'information précise sur ce sujet dans notre base. Je vous recommande de contacter notre support humain à **support@hoodiewear.com** ou via le chat en direct sur notre site. 😊",
-      "ground_truth": "Nous acceptons les cartes bancaires, PayPal et virement.",
-      "nb_sources": 5,
-      "avg_rag_score": 0.481,
-      "faithfulness": 0.5,
-      "answer_relevancy": 0.6,
-      "context_precision": 0.5,
-      "completeness": 0.0,
-      "global_score": 0.4
-    },
-    {
-      "question": "Comment suivre ma commande ?",
-      "answer": "Je n'ai pas trouvé d'information précise sur ce sujet dans notre base. Je vous recommande de contacter notre support humain à **support@hoodiewear.com** ou via le chat en direct sur notre site. 😊",
-      "ground_truth": "Vous recevez un email avec un lien de suivi après expédition.",
-      "nb_sources": 5,
-      "avg_rag_score": 0.519,
-      "faithfulness": 0.5,
-      "answer_relevancy": 0.8,
-      "context_precision": 0.5,
-      "completeness": 0.5,
-      "global_score": 0.575
-    },
-    {
-      "question": "Livrez-vous à l'international ?",
-      "answer": "Je n'ai pas trouvé d'information précise sur ce sujet dans notre base. Je vous recommande de contacter notre support humain à **support@hoodiewear.com** ou via le chat en direct sur notre site. 😊",
-      "ground_truth": "Oui, nous livrons dans toute l'Europe et en Afrique du Nord.",
-      "nb_sources": 5,
-      "avg_rag_score": 0.608,
-      "faithfulness": 0.5,
-      "answer_relevancy": 0.5,
-      "context_precision": 0.5,
-      "completeness": 0.5,
-      "global_score": 0.5
-    },
-    {
-      "question": "Comment laver mon hoodie ?",
-      "answer": "Je n'ai pas trouvé d'information précise sur ce sujet dans notre base. Je vous recommande de contacter notre support humain à **support@hoodiewear.com** ou via le chat en direct sur notre site. 😊",
-      "ground_truth": "Lavez à 30°C, ne pas sécher en machine, repassage à basse température.",
-      "nb_sources": 5,
-      "avg_rag_score": 0.63,
-      "faithfulness": 0.5,
-      "answer_relevancy": 0.5,
-      "context_precision": 0.5,
-      "completeness": 0.5,
-      "global_score": 0.5
-    },
-    {
-      "question": "Puis-je annuler ma commande ?",
-      "answer": "⚠️ Je vois que vous rencontrez un problème sérieux. Je vous mets en contact avec un agent humain immédiatement. Veuillez contacter **support@hoodiewear.com** ou appeler le **+216 XX XXX XXX**. Nous traitons votre demande en priorité absolue. 🙏",
-      "ground_truth": "Vous pouvez annuler votre commande dans les 24h suivant la commande.",
-      "nb_sources": 0,
-      "avg_rag_score": 0,
-      "faithfulness": 0.5,
-      "answer_relevancy": 0.5,
-      "context_precision": 0.5,
-      "completeness": 0.5,
-      "global_score": 0.5
-    }
-  ]
+  "faithfulness": 0.0,
+  "answer_relevancy": 0.0,
+  "context_precision": 0.0,
+  "context_recall": 0.0,
+  "ragas_score": 0.0,
+  "nb_questions": 20.0,
+  "nb_failed": 0.0,
+  "timestamp": "2026-04-28 15:13",
+  "date": "2026-04-28"
 }

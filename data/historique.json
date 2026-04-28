@@ -286,5 +286,345 @@
         "content": "Acceptez-vous les crypto-monnaies ?"
       }
     ]
+  },
+  {
+    "date": "2026-04-19 13:34",
+    "nb_messages": 2,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Quels sont les délais de livraison ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Nos délais de livraison sont de 3 à 5 jours ouvrés pour la Tunisie, 5 à 10 jours pour l'Europe, et 10 à 15 jours pour le reste du monde."
+      }
+    ]
+  },
+  {
+    "date": "2026-04-19 13:34",
+    "nb_messages": 4,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Quelles tailles sont disponibles ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Nous proposons les tailles XS, S, M, L, XL et XXL. Consultez notre guide des tailles pour choisir la bonne. Pour un style oversized, prenez une taille au-dessus de votre taille habituelle."
+      },
+      {
+        "role": "user",
+        "content": "Comment mesurer ma taille correctement ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Pour mesurer votre taille correctement, nous vous recommandons de consulter notre guide des tailles disponible sur notre site. Vous pouvez également prendre vos mesures en vous référant aux indications suivantes : tour de poitrine, tour de taille et longueur. Si vous avez des doutes, n'hésitez pas à nous contacter à l'adresse tailles@hoodiewear.com pour obtenir des conseils personnalisés."
+      }
+    ]
+  },
+  {
+    "date": "2026-04-19 13:34",
+    "nb_messages": 2,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Livrez-vous à l'international ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Oui, nous livrons dans toute l'Europe, en Afrique du Nord et dans certains pays du Moyen-Orient. Les délais varient de 5 à 15 jours selon la destination. Les frais de port international sont calculés à la commande."
+      }
+    ]
+  },
+  {
+    "date": "2026-04-19 13:34",
+    "nb_messages": 2,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Comment retourner un article ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Pour retourner un article, vous devez envoyer un email à support@hoodiewear.com avec votre numéro de commande. Vous avez 30 jours après réception pour effectuer un retour. Les articles doivent être non portés avec étiquettes intactes. Vous pouvez également suivre la procédure suivante :\n\n1. Contactez support@hoodiewear.com avec votre numéro de commande\n2. Recevez votre bon de retour par email\n3. Déposez le colis dans un point relais agréé\n\nN'oubliez pas de conserver l'emballage original de préférence. Les articles promos finaux et personnalisés sont exclus du retour. Le remboursement sera effectué sous 5 à 7 jours ouvrés."
+      }
+    ]
+  },
+  {
+    "date": "2026-04-19 13:34",
+    "nb_messages": 2,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Comment récupérer mon mot de passe ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Pour récupérer votre mot de passe, cliquez sur \"Mot de passe oublié\" sur la page de connexion, entrez votre email d'inscription, et vous recevrez un lien de réinitialisation valable 24 heures. Vérifiez vos spams si vous ne le recevez pas. Si le problème persiste, n'hésitez pas à nous contacter avec votre adresse email d'inscription."
+      }
+    ]
+  },
+  {
+    "date": "2026-04-19 13:36",
+    "nb_messages": 2,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Comment suivre ma commande ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Après expédition, vous recevez un email avec un numéro de suivi. Vous pouvez suivre votre colis sur notre site dans la rubrique 'Mon compte > Mes commandes' ou directement sur le site de notre transporteur."
+      }
+    ]
+  },
+  {
+    "date": "2026-04-19 13:36",
+    "nb_messages": 2,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Comment suivre ma commande ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Après expédition, vous recevez un email avec un numéro de suivi. Vous pouvez suivre votre colis sur notre site dans la rubrique 'Mon compte > Mes commandes' ou directement sur le site de notre transporteur."
+      }
+    ]
+  },
+  {
+    "date": "2026-04-19 17:44",
+    "nb_messages": 6,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Quels sont les modes de paiement ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Nous acceptons les cartes bancaires Visa et Mastercard, PayPal, et le virement bancaire. En Tunisie, le paiement à la livraison en espèces est disponible avec un supplément de 3 DT."
+      },
+      {
+        "role": "user",
+        "content": "Le paiement à la livraison est-il disponible ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Oui, le paiement à la livraison est disponible, mais uniquement en Tunisie, avec un supplément de 3 DT."
+      },
+      {
+        "role": "user",
+        "content": "Quels sont les frais de livraison ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Les frais de livraison varient selon le pays et le poids de votre commande. Pour la Tunisie, les frais de livraison sont de 3 DT pour le paiement à la livraison. Pour l'international, les frais de livraison sont calculés à la commande et varient de 5 à 15 jours selon la destination. Si vous souhaitez plus de détails, veuillez nous contacter par chat avec votre numéro de commande ou votre pays de livraison pour que nous puissions vous fournir des informations plus précises."
+      }
+    ]
+  },
+  {
+    "date": "2026-04-20 13:30",
+    "nb_messages": 8,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Je veux savoir quand je vais recevoir mon colis ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Pour connaître la date de livraison prévue de votre colis, vous pouvez suivre votre commande sur notre site dans la rubrique 'Mon compte > Mes commandes' ou directement sur le site de notre transporteur en utilisant le numéro de suivi que vous avez reçu par email après l'expédition de votre commande. Si vous n'avez pas reçu d'email avec le numéro de suivi, vous pouvez nous contacter pour obtenir plus d'informations."
+      },
+      {
+        "role": "user",
+        "content": "Est-ce que vous acceptez PayPal ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Oui, nous acceptons PayPal comme mode de paiement. Vous pouvez effectuer vos achats en toute sécurité grâce à notre système de paiement en ligne sécurisé avec 3D Secure pour les cartes bancaires et une connexion SSL pour les transactions."
+      },
+      {
+        "role": "user",
+        "content": "Quelle est la capitale de l’Allemagne ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Je suis désolé, mais cette question n'est pas liée à nos services ou produits chez HoodieWear. Pour obtenir des informations sur la capitale de l'Allemagne, je vous invite à consulter une source d'information générale. Si vous avez des questions sur nos produits, notre programme de fidélité, les délais de livraison ou tout autre sujet lié à HoodieWear, je serais ravi de vous aider."
+      },
+      {
+        "role": "user",
+        "content": "Explique-moi l’intelligence artificielle"
+      },
+      {
+        "role": "assistant",
+        "content": "Je suis désolé, mais cette question n'est pas liée à nos services ou produits chez HoodieWear. Pour obtenir des informations sur l'intelligence artificielle, je vous invite à consulter une source d'information générale. Si vous avez des questions sur nos produits, notre programme de fidélité, les délais de livraison ou tout autre sujet lié à HoodieWear, je serais ravi de vous aider. Vous pouvez également contacter notre équipe de support à l'adresse support@hoodiewear.com pour toute question spécifique."
+      }
+    ]
+  },
+  {
+    "date": "2026-04-20 13:36",
+    "nb_messages": 8,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Je veux savoir quand je vais recevoir mon colis ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Pour connaître la date de livraison prévue de votre colis, vous pouvez suivre votre commande sur notre site dans la rubrique 'Mon compte > Mes commandes' ou directement sur le site de notre transporteur en utilisant le numéro de suivi que vous avez reçu par email après l'expédition de votre commande. Si vous n'avez pas reçu d'email avec le numéro de suivi, vous pouvez nous contacter pour obtenir plus d'informations."
+      },
+      {
+        "role": "user",
+        "content": "Est-ce que vous acceptez PayPal ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Oui, nous acceptons PayPal comme mode de paiement. Vous pouvez effectuer vos achats en toute sécurité grâce à notre système de paiement en ligne sécurisé avec 3D Secure pour les cartes bancaires et une connexion SSL pour les transactions."
+      },
+      {
+        "role": "user",
+        "content": "Quelle est la capitale de l’Allemagne ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Je suis désolé, mais cette question n'est pas liée à nos services ou produits chez HoodieWear. Pour obtenir des informations sur la capitale de l'Allemagne, je vous invite à consulter une source d'information générale. Si vous avez des questions sur nos produits, notre programme de fidélité, les délais de livraison ou tout autre sujet lié à HoodieWear, je serais ravi de vous aider."
+      },
+      {
+        "role": "user",
+        "content": "Explique-moi l’intelligence artificielle"
+      },
+      {
+        "role": "assistant",
+        "content": "Je suis désolé, mais cette question n'est pas liée à nos services ou produits chez HoodieWear. Pour obtenir des informations sur l'intelligence artificielle, je vous invite à consulter une source d'information générale. Si vous avez des questions sur nos produits, notre programme de fidélité, les délais de livraison ou tout autre sujet lié à HoodieWear, je serais ravi de vous aider. Vous pouvez également contacter notre équipe de support à l'adresse support@hoodiewear.com pour toute question spécifique."
+      }
+    ]
+  },
+  {
+    "date": "2026-04-20 13:37",
+    "nb_messages": 8,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Je veux parler à un agent humain"
+      },
+      {
+        "role": "assistant",
+        "content": "Bien sûr, je suis là pour vous aider. Comment puis-je vous assister aujourd'hui ? Vous avez une question sur une commande, un problème avec un produit ou autre chose ?"
+      },
+      {
+        "role": "user",
+        "content": "Comment contacter le service client ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Vous pouvez contacter notre service client par email à support@hoodiewear.com (réponse sous 24h), par chat en direct sur notre site (lun-ven 9h-18h), ou via nos réseaux sociaux Instagram et Facebook."
+      },
+      {
+        "role": "user",
+        "content": "Comment contacter le service client ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Vous pouvez contacter notre service client par email à support@hoodiewear.com (réponse sous 24h), par chat en direct sur notre site (lun-ven 9h-18h), ou via nos réseaux sociaux Instagram et Facebook."
+      },
+      {
+        "role": "user",
+        "content": "How can I track my order?"
+      },
+      {
+        "role": "assistant",
+        "content": "Information not available. Please contact **support@hoodiewear.com** 😊 "
+      }
+    ]
+  },
+  {
+    "date": "2026-04-20 13:37",
+    "nb_messages": 8,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Je veux parler à un agent humain"
+      },
+      {
+        "role": "assistant",
+        "content": "Bien sûr, je suis là pour vous aider. Comment puis-je vous assister aujourd'hui ? Vous avez une question sur une commande, un problème avec un produit ou autre chose ?"
+      },
+      {
+        "role": "user",
+        "content": "Comment contacter le service client ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Vous pouvez contacter notre service client par email à support@hoodiewear.com (réponse sous 24h), par chat en direct sur notre site (lun-ven 9h-18h), ou via nos réseaux sociaux Instagram et Facebook."
+      },
+      {
+        "role": "user",
+        "content": "Comment contacter le service client ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Vous pouvez contacter notre service client par email à support@hoodiewear.com (réponse sous 24h), par chat en direct sur notre site (lun-ven 9h-18h), ou via nos réseaux sociaux Instagram et Facebook."
+      },
+      {
+        "role": "user",
+        "content": "How can I track my order?"
+      },
+      {
+        "role": "assistant",
+        "content": "Information not available. Please contact **support@hoodiewear.com** 😊 "
+      }
+    ]
+  },
+  {
+    "date": "2026-04-20 13:38",
+    "nb_messages": 2,
+    "messages": [
+      {
+        "role": "user",
+        "content": "كيف أسترجع كلمة المرور؟"
+      },
+      {
+        "role": "assistant",
+        "content": "المعلومات غير متوفرة. تواصل مع **support@hoodiewear.com** 😊 "
+      }
+    ]
+  },
+  {
+    "date": "2026-04-20 14:02",
+    "nb_messages": 2,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Quelle est la capitale de l’Allemagne ?."
+      },
+      {
+        "role": "assistant",
+        "content": "La capitale de l’Allemagne est Berlin. Pour toute question liée à nos produits ou à votre commande, n'hésitez pas à nous contacter à support@hoodiewear.com. Nous sommes à votre disposition pour vous aider."
+      }
+    ]
+  },
+  {
+    "date": "2026-04-21 12:57",
+    "nb_messages": 2,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Puis-je annuler ma commande ?"
+      },
+      {
+        "role": "assistant",
+        "content": "⚠️Problèmesérieuxdétecté.Contactez**support@hoodiewear.com**ou**+216XXXXXXXX**.Prioritéabsolue.🙏"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-26 18:35",
+    "nb_messages": 1,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Comment retourner un article ?"
+      }
+    ]
   }
 ]

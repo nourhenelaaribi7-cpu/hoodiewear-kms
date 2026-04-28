@@ -1,0 +1,36 @@
+[
+  {
+    "verdict": "fail",
+    "global_score": 0.0,
+    "faithfulness": 0.0,
+    "relevancy": 0.0,
+    "context_precision": 0.0,
+    "completeness": 0.0,
+    "issues": [
+      "faithfulness: La réponse mentionne des 'jours ouvrés' qui n'est pas mentionné dans le contexte officiel de HoodieWear.",
+      "relevancy: La réponse ne répond pas directement à la question car elle ne fournit pas d'informations sur les délais de livraison en Tunisie, mais plutôt un intervalle de temps général.",
+      "context_precision: Aucune source récupérée",
+      "completeness: La réponse est trop vague et ne fournit pas d'informations concretes sur les étapes de livraison ou les délais spécifiques, ce qui rend difficile pour le client de savoir quoi faire après cette réponse."
+    ],
+    "question": "Quels sont les délais de livraison en Tunisie ?",
+    "duration_seconds": 1.93,
+    "timestamp": "2026-04-25 20:14:36"
+  },
+  {
+    "verdict": "fail",
+    "global_score": 0.0,
+    "faithfulness": 0.0,
+    "relevancy": 0.0,
+    "context_precision": 0.0,
+    "completeness": 0.0,
+    "issues": [
+      "faithfulness: La réponse mentionne des 'jours ouvrés' qui n'est pas mentionné dans le contexte officiel de HoodieWear.",
+      "relevancy: La réponse ne répond pas directement à la question car elle ne fournit pas d'informations sur les délais de livraison en Tunisie, mais plutôt un intervalle de temps général.",
+      "context_precision: Aucune source récupérée",
+      "completeness: La réponse est trop vague et ne fournit pas d'informations concretes sur les étapes de livraison ou les délais spécifiques, ce qui rend difficile pour le client de savoir quoi faire après cette réponse."
+    ],
+    "question": "Quels sont les délais de livraison en Tunisie ?",
+    "duration_seconds": 1.19,
+    "timestamp": "2026-04-26 18:17:43"
+  }
+]

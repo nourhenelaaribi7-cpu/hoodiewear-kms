@@ -4,8 +4,10 @@ Pipeline RAG optimisé — gestion tokens Groq
 - Suggestions sans LLM (règles)
 - Modèle léger pour tâches secondaires
 - Compteur tokens avec alerte
+- NOUVEAU : sanitize_input() contre les injections de prompt
 """
 import os
+import re
 import json
 import hashlib
 from datetime import datetime
@@ -21,7 +23,6 @@ client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 # ── Modèles disponibles ────────────────────────────────────────────────────────
 MODEL_MAIN  = "llama-3.3-70b-versatile"   # Réponses principales (qualité)
 MODEL_LIGHT = "llama-3.1-8b-instant"      # Tâches légères (suggestions, éval)
-# MODEL_LIGHT tokens/day : 500,000 (5x plus généreux !)
 
 # ── Fichiers ───────────────────────────────────────────────────────────────────
 CACHE_FILE        = "data/response_cache.json"
@@ -106,6 +107,36 @@ TOPIC_KEYWORDS = {
 }
 
 
+# ── NOUVEAU : Protection contre les injections de prompt ──────────────────────
+def sanitize_input(text: str, max_length: int = 500) -> str:
+    """
+    Nettoie l'input utilisateur contre les injections de prompt.
+    Tronque le texte et supprime les patterns d'injection connus.
+    """
+    # Tronque si trop long
+    text = text[:max_length]
+
+    # Supprime les tentatives d'injection les plus communes
+    injection_patterns = [
+        r"ignore\s+(tes|your|all|mes|toutes)\s+(instructions|règles|rules)",
+        r"oublie\s+(tes|toutes)\s+(instructions|règles)",
+        r"system\s*:",
+        r"assistant\s*:",
+        r"<\|.*?\|>",           # tokens spéciaux Llama
+        r"\[INST\]|\[/INST\]",  # format Llama chat
+        r"tu es maintenant",
+        r"now you are",
+        r"pretend you are",
+        r"act as if",
+        r"###\s*(instruction|system|prompt)",
+    ]
+
+    for pattern in injection_patterns:
+        text = re.sub(pattern, "[filtré]", text, flags=re.IGNORECASE)
+
+    return text.strip()
+
+
 def detect_topic(question: str, sources: list) -> str:
     """Détecte le topic de la question pour les suggestions sans LLM"""
     text = question.lower()
@@ -132,7 +163,6 @@ def _load_token_usage() -> dict:
     try:
         with open(TOKEN_TRACKER, "r") as f:
             data = json.load(f)
-        # Reset si nouveau jour
         if data.get("date") != datetime.now().strftime("%Y-%m-%d"):
             return {"date": datetime.now().strftime("%Y-%m-%d"), "tokens_used": 0}
         return data
@@ -204,7 +234,6 @@ def _save_to_cache(key: str, answer: str, sources: list, lang: str):
 def _get_from_cache(key: str) -> dict | None:
     cache = _load_cache()
     if key in cache:
-        # Incrémente le compteur de hits
         cache[key]["hits"] = cache[key].get("hits", 0) + 1
         with open(CACHE_FILE, "w", encoding="utf-8") as f:
             json.dump(cache, f, ensure_ascii=False, indent=2)
@@ -311,7 +340,6 @@ def build_messages(question: str, context: str, chat_history: list,
     messages.append({
         "role": "user",
         "content": f"Contexte HoodieWear :\n---\n{context[:2000]}\n---\nQuestion : {question}"
-        # Limite le contexte à 2000 chars pour économiser
     })
     return messages
 
@@ -325,9 +353,8 @@ def call_groq_llm(question: str, context: str, chat_history: list = None,
         model=MODEL_MAIN,
         messages=messages,
         temperature=0.3,
-        max_tokens=400   # Réduit de 500 à 400
+        max_tokens=400
     )
-    # Track tokens
     usage = response.usage
     if usage:
         _save_token_usage(usage.total_tokens)
@@ -372,7 +399,12 @@ def suggest_followup_questions(question: str, answer: str,
 
 # ── Pipelines RAG ──────────────────────────────────────────────────────────────
 def answer_question_stream(question: str, chat_history: list = None):
-    """Pipeline RAG avec streaming + cache + gestion tokens"""
+    """
+    Pipeline RAG avec streaming + cache + gestion tokens.
+    NOUVEAU : sanitize_input() appliqué en premier.
+    """
+    # ── Sanitization de l'input (protection injection) ─────────────────────
+    question = sanitize_input(question)
 
     lang      = detect_language(question)
     sentiment = analyze_sentiment(question)
@@ -472,7 +504,12 @@ def answer_question_stream(question: str, chat_history: list = None):
 
 
 def answer_question(question: str, chat_history: list = None):
-    """Pipeline RAG sans streaming + cache + gestion tokens"""
+    """
+    Pipeline RAG sans streaming + cache + gestion tokens.
+    NOUVEAU : sanitize_input() appliqué en premier.
+    """
+    # ── Sanitization de l'input (protection injection) ─────────────────────
+    question = sanitize_input(question)
 
     lang      = detect_language(question)
     sentiment = analyze_sentiment(question)

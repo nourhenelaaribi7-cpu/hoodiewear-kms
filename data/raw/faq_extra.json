@@ -1,0 +1,50 @@
+[
+  {
+    "question": "Quels sont vos horaires du service client ?",
+    "reponse": "Notre service client est disponible du lundi au vendredi de 9h à 18h (heure de Tunis). Le chat en ligne est disponible en temps réel pendant ces horaires. En dehors de ces heures, envoyez un email à support@hoodiewear.com et nous répondrons dans les 24h.",
+    "tags": ["contact", "horaires", "service client"],
+    "mots_cles": ["horaires", "disponible", "contact", "heures", "ouvert"]
+  },
+  {
+    "question": "Comment fonctionne le paiement à la livraison en Tunisie ?",
+    "reponse": "Le paiement à la livraison est disponible uniquement en Tunisie. Un supplément de 3 DT s'applique. Le livreur accepte uniquement les espèces. Assurez-vous d'avoir le montant exact lors de la livraison.",
+    "tags": ["paiement", "livraison", "Tunisie"],
+    "mots_cles": ["paiement livraison", "espèces", "Tunisie", "COD", "3 DT"]
+  },
+  {
+    "question": "Puis-je personnaliser mon hoodie avec un logo ou texte ?",
+    "reponse": "Oui ! HoodieWear propose un service de personnalisation pour les commandes de 5 pièces minimum. Contactez-nous à commandes@hoodiewear.com avec votre design. Délai supplémentaire de 5 à 7 jours ouvrés pour la personnalisation.",
+    "tags": ["personnalisation", "commande", "produit"],
+    "mots_cles": ["personnaliser", "logo", "texte", "custom", "broderie", "impression"]
+  },
+  {
+    "question": "Y a-t-il des promotions ou codes de réduction ?",
+    "reponse": "HoodieWear propose régulièrement des promotions sur Instagram et Facebook. Inscrivez-vous à notre newsletter pour recevoir un code de -10% sur votre première commande. Les soldes ont lieu deux fois par an en janvier et juillet.",
+    "tags": ["promotion", "réduction", "code promo"],
+    "mots_cles": ["promo", "réduction", "code", "soldes", "discount", "newsletter"]
+  },
+  {
+    "question": "Mes informations personnelles sont-elles sécurisées ?",
+    "reponse": "Oui, HoodieWear respecte le RGPD. Vos données personnelles sont chiffrées et ne sont jamais vendues à des tiers. Vous pouvez demander la suppression de vos données à tout moment en contactant privacy@hoodiewear.com.",
+    "tags": ["sécurité", "données", "RGPD", "confidentialité"],
+    "mots_cles": ["données personnelles", "sécurité", "RGPD", "confidentialité", "privé"]
+  },
+  {
+    "question": "Comment suivre mon colis en temps réel ?",
+    "reponse": "Après expédition, vous recevez un SMS et un email avec votre numéro de suivi. Vous pouvez suivre votre colis en temps réel sur le site de notre transporteur (Aramex ou Jumia Logistics). Le suivi est également disponible dans votre espace client sous 'Mes commandes'.",
+    "tags": ["suivi", "colis", "tracking", "livraison"],
+    "mots_cles": ["suivi", "tracking", "colis", "Aramex", "temps réel", "SMS"]
+  },
+  {
+    "question": "Que faire si je reçois le mauvais article ?",
+    "reponse": "Si vous recevez un article différent de votre commande, contactez-nous immédiatement avec une photo de l'article reçu et votre numéro de commande. Nous vous envoyons le bon article en express sans frais supplémentaires et prenons en charge le retour du mauvais article.",
+    "tags": ["erreur", "commande", "retour", "réclamation"],
+    "mots_cles": ["mauvais article", "erreur", "commande incorrecte", "échange", "retour"]
+  },
+  {
+    "question": "Proposez-vous la livraison express ?",
+    "reponse": "Oui ! La livraison express 24h est disponible en Tunisie pour toute commande passée avant 14h00. Un supplément de 7 DT s'applique. Pour l'Europe, la livraison express prend 2 à 3 jours ouvrés avec DHL Express.",
+    "tags": ["livraison", "express", "rapide"],
+    "mots_cles": ["express", "rapide", "24h", "urgent", "DHL", "7 DT"]
+  }
+]

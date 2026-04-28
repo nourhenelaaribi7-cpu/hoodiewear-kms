@@ -1,0 +1,212 @@
+[
+  {
+    "id": "audio_20260421115553",
+    "question": " Bonjour et bienvenue chez Hoodiwell. Si vous souhaitez retourner ou échanger un hoodie, vous disposez de 30 jours après la réception de votre commande. Assurez-vous que l'article est en bon état et en portée. Pour lancer une demande, connectez-vous à votre compte ou contactez notre service client avec votre numéro de commande. Une fois votre demande validée, vous recevrez les instructions de retour. Merci de votre confiance et à bientôt chez Hoodiwell.",
+    "reponse": "",
+    "source": "whisper_realtime",
+    "audio_file": "tmp_Recording_106.m4a",
+    "category": "support_client",
+    "langue": "fr",
+    "date": "2026-04-21 11:55",
+    "tags": [
+      "support_client",
+      "fr"
+    ],
+    "mots_cles": [
+      "bonjour",
+      "et",
+      "bienvenue",
+      "chez",
+      "hoodiwell."
+    ]
+  },
+  {
+    "id": "audio_20260421120304",
+    "question": " مرحبا بكم في هوديوار، إذا كنت ترغب في إرجاع أو استبدال الهودي، يمكنك القيام بذلك خلال 30 يوما من تاريخ استلام الطلب. يرجى التأكد من أن المنتج في حالة جيدة ولم يتم استخدامه. لبدء طلب الإرجاع، يمكنك تسجيل الدخول إلى حسابك أو التواصل مع خدمة العملاء مع رقم الطلب. بعد تأكيد الطلب، ستصلك تعليمات الإرجاع. شكرا لثقتكم في هوديوار.",
+    "reponse": "",
+    "source": "whisper_realtime",
+    "audio_file": "tmp_Recording_108.m4a",
+    "category": "support_client",
+    "langue": "ar",
+    "date": "2026-04-21 12:03",
+    "tags": [
+      "support_client",
+      "ar"
+    ],
+    "mots_cles": [
+      "مرحبا",
+      "بكم",
+      "في",
+      "هوديوار،",
+      "إذا"
+    ]
+  },
+  {
+    "id": "audio_20260421121527",
+    "question": " مرحبا بكم في هوديوار، إذا كنت ترغب في إرجاع أو استبدال الهودي، يمكنك القيام بذلك خلال 30 يوما من تاريخ استلام الطلب. يرجى التأكد من أن المنتج في حالة جيدة ولم يتم استخدامه. لبدء طلب الإرجاع، يمكنك تسجيل الدخول إلى حسابك أو التواصل مع خدمة العملاء مع رقم الطلب. بعد تأكيد الطلب، ستصلك تعليمات الإرجاع. شكرا لثقتكم في هوديوار.",
+    "reponse": "",
+    "source": "whisper_realtime",
+    "audio_file": "tmp_Recording_108.m4a",
+    "category": "retour",
+    "langue": "ar",
+    "date": "2026-04-21 12:15",
+    "tags": [
+      "retour",
+      "ar"
+    ],
+    "mots_cles": [
+      "مرحبا",
+      "بكم",
+      "في",
+      "هوديوار،",
+      "إذا"
+    ]
+  },
+  {
+    "id": "audio_20260421122938",
+    "question": " You can return your product within 30 days as long as it's in a good condition.",
+    "reponse": "",
+    "source": "whisper_realtime",
+    "audio_file": "tmp_Recording_110.m4a",
+    "category": "retour",
+    "langue": "en",
+    "date": "2026-04-21 12:29",
+    "tags": [
+      "retour",
+      "en"
+    ],
+    "mots_cles": [
+      "you",
+      "can",
+      "return",
+      "your",
+      "product"
+    ]
+  },
+  {
+    "id": "audio_20260421123054",
+    "question": " We apologize for the inconvenience. Please provide the details of your complaint so we can resolve it quickly.",
+    "reponse": "",
+    "source": "whisper_realtime",
+    "audio_file": "tmp_Recording_119.m4a",
+    "category": "reclamation",
+    "langue": "en",
+    "date": "2026-04-21 12:30",
+    "tags": [
+      "reclamation",
+      "en"
+    ],
+    "mots_cles": [
+      "we",
+      "apologize",
+      "for",
+      "the",
+      "inconvenience."
+    ]
+  },
+  {
+    "id": "audio_20260421123131",
+    "question": " نعتذر عن هذا الاشكال يرجى تزويدنا بتفاصيل الشكوى حتى نتمكن من معالجتها بسرعة",
+    "reponse": "",
+    "source": "whisper_realtime",
+    "audio_file": "tmp_Recording_114.m4a",
+    "category": "reclamation",
+    "langue": "ar",
+    "date": "2026-04-21 12:31",
+    "tags": [
+      "reclamation",
+      "ar"
+    ],
+    "mots_cles": [
+      "نعتذر",
+      "عن",
+      "هذا",
+      "الاشكال",
+      "يرجى"
+    ]
+  },
+  {
+    "id": "audio_20260421123237",
+    "question": " Pour traiter une demande client, vérifiez d'abord le numéro de commande, puis proposez une solution claire et adaptée.",
+    "reponse": "",
+    "source": "whisper_realtime",
+    "audio_file": "tmp_Recording_120.m4a",
+    "category": "formation_agent",
+    "langue": "fr",
+    "date": "2026-04-21 12:32",
+    "tags": [
+      "formation_agent",
+      "fr"
+    ],
+    "mots_cles": [
+      "pour",
+      "traiter",
+      "une",
+      "demande",
+      "client,"
+    ]
+  },
+  {
+    "id": "audio_20260421123324",
+    "question": " To handle a customer request, first check the order number, then provide a clear and appropriate solution.",
+    "reponse": "",
+    "source": "whisper_realtime",
+    "audio_file": "tmp_Recording_123.m4a",
+    "category": "formation_agent",
+    "langue": "en",
+    "date": "2026-04-21 12:33",
+    "tags": [
+      "formation_agent",
+      "en"
+    ],
+    "mots_cles": [
+      "to",
+      "handle",
+      "a",
+      "customer",
+      "request,"
+    ]
+  },
+  {
+    "id": "audio_20260421123356",
+    "question": " لمعالجة طلب العميل تحقق أولاً من رقم الطلب ثم قدم حلاً واضحاً ومناسباً",
+    "reponse": "",
+    "source": "whisper_realtime",
+    "audio_file": "tmp_Recording_122.m4a",
+    "category": "formation_agent",
+    "langue": "ar",
+    "date": "2026-04-21 12:33",
+    "tags": [
+      "formation_agent",
+      "ar"
+    ],
+    "mots_cles": [
+      "لمعالجة",
+      "طلب",
+      "العميل",
+      "تحقق",
+      "أولاً"
+    ]
+  },
+  {
+    "id": "audio_20260426194455",
+    "question": " To handle a customer request, first check the order number, then provide a clear and appropriate solution.",
+    "reponse": "",
+    "source": "whisper_realtime",
+    "audio_file": "tmp_Recording_123.m4a",
+    "category": "formation_agent",
+    "langue": "en",
+    "date": "2026-04-26 19:44",
+    "tags": [
+      "formation_agent",
+      "en"
+    ],
+    "mots_cles": [
+      "to",
+      "handle",
+      "a",
+      "customer",
+      "request,"
+    ]
+  }
+]

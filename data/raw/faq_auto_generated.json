@@ -1,0 +1,174 @@
+[
+  {
+    "id": "auto_46244",
+    "gap_id": "gap_11676",
+    "question": "كيف أسترجع كلمة المرور؟",
+    "reponse": "يمكنك استرجاع كلمة المرور من خلال الضغط على خيار忘ت كلمة المرور في صفحة تسجيل الدخول، ثم اتبع الإرشادات التي تظهر على الشاشة، وإذا واجهت أي مشكلة يمكنك التواصل معنا على support@hoodiewear.com.",
+    "tags": [
+      "كلمة المرور",
+      "استرجاع"
+    ],
+    "mots_cles": [
+      "كلمة المرور",
+      "تسجيل الدخول",
+      "support"
+    ],
+    "langue": "ar",
+    "source": "auto_generated",
+    "statut": "validé",
+    "date_creation": "2026-04-20 13:38",
+    "score_rag_avant": 0.0,
+    "attempt": 1,
+    "date_validation": "2026-04-20 13:38"
+  },
+  {
+    "id": "auto_18244",
+    "gap_id": "gap_11676",
+    "question": "كيف أسترجع كلمة المرور؟",
+    "reponse": "يمكنك استرجاع كلمة المرور من خلال الضغط على خيار忘ت كلمة المرور في صفحة تسجيل الدخول على موقع hoodiewear.com، ثم اتبع الإرشادات التي تظهر على الشاشة، وإن واجهت أي مشكلة يمكنك التواصل مع support@hoodiewear.com.",
+    "tags": [
+      "كلمة المرور",
+      "استرجاع"
+    ],
+    "mots_cles": [
+      "تسجيل الدخول",
+      "كلمة المرور"
+    ],
+    "langue": "ar",
+    "source": "auto_generated",
+    "statut": "validé",
+    "date_creation": "2026-04-20 14:00",
+    "score_rag_avant": 0.0,
+    "attempt": 1,
+    "date_validation": "2026-04-20 14:00"
+  },
+  {
+    "id": "auto_28487",
+    "gap_id": "gap_rt_35967",
+    "question": "Quelle est la capitale de l’Allemagne ?",
+    "reponse": "La capitale de l’Allemagne est Berlin. Pour toute question liée à nos produits ou à votre commande, n'hésitez pas à nous contacter à support@hoodiewear.com. Nous sommes à votre disposition pour vous aider.",
+    "tags": [
+      "géographie",
+      "information"
+    ],
+    "mots_cles": [
+      "Allemagne",
+      "capitale",
+      "Berlin"
+    ],
+    "langue": "french",
+    "source": "auto_generated",
+    "statut": "validé",
+    "date_creation": "2026-04-20 14:01",
+    "score_rag_avant": 0.378,
+    "attempt": 1,
+    "date_validation": "2026-04-20 14:01"
+  },
+  {
+    "id": "auto_08917",
+    "gap_id": "gap_rt_20859",
+    "question": "Explique-moi l’intelligence artificielle",
+    "reponse": "L'intelligence artificielle (IA) désigne les systèmes informatiques capables d'effectuer des tâches qui nécessitent normalement une intelligence humaine, comme la reconnaissance d'images ou la compréhension du langage. Pour plus d'informations sur les applications de l'IA dans le commerce en ligne, vous pouvez contacter notre équipe de support à support@hoodiewear.com. Nous sommes à votre disposition pour répondre à vos questions.",
+    "tags": [
+      "intelligence artificielle",
+      "informatique"
+    ],
+    "mots_cles": [
+      "IA",
+      "apprentissage automatique"
+    ],
+    "langue": "french",
+    "source": "auto_generated",
+    "statut": "validé",
+    "date_creation": "2026-04-20 14:02",
+    "score_rag_avant": 0.338,
+    "attempt": 1,
+    "date_validation": "2026-04-20 14:02"
+  },
+  {
+    "id": "auto_35267",
+    "gap_id": "gap_62494",
+    "question": "كيف أسترجع كلمة المرور؟",
+    "reponse": "يمكنك استرجاع كلمة المرور من خلال الضغط على خيار 'نسيت كلمة المرور' على صفحة تسجيل الدخول، ثم اتبع الإرشادات التي تظهر على الشاشة. إذا واجهت أي مشكلة، يرجى التواصل معنا على support@hoodiewear.com. سوف نرد على استفساراتك في غضون 24 ساعة خلال أيام العمل من الساعة 9 صباحاً حتى 6 مساءً.",
+    "tags": [
+      "كلمة المرور",
+      "استرجاع"
+    ],
+    "mots_cles": [
+      "نسيت كلمة المرور",
+      "دعم"
+    ],
+    "langue": "ar",
+    "source": "auto_generated",
+    "statut": "validé",
+    "date_creation": "2026-04-21 12:35",
+    "score_rag_avant": 0.0,
+    "attempt": 1,
+    "date_validation": "2026-04-21 12:35"
+  },
+  {
+    "id": "auto_75275",
+    "gap_id": "gap_rt_99515",
+    "question": "Quelle est la capitale de l’Allemagne ?",
+    "reponse": "La capitale de l'Allemagne est Berlin. Pour toute question liée à nos produits ou à votre commande, n'hésitez pas à nous contacter au support@hoodiewear.com. Nous sommes à votre disposition pour vous aider.",
+    "tags": [
+      "géographie",
+      "information"
+    ],
+    "mots_cles": [
+      "Allemagne",
+      "capitale",
+      "Berlin"
+    ],
+    "langue": "french",
+    "source": "auto_generated",
+    "statut": "validé",
+    "date_creation": "2026-04-21 12:35",
+    "score_rag_avant": 0.378,
+    "attempt": 1,
+    "date_validation": "2026-04-21 12:35"
+  },
+  {
+    "id": "auto_75275",
+    "gap_id": "gap_rt_99515",
+    "question": "Quelle est la capitale de l’Allemagne ?",
+    "reponse": "La capitale de l'Allemagne est Berlin. Pour toute question liée à nos produits ou à votre commande, n'hésitez pas à nous contacter au support@hoodiewear.com. Nous sommes à votre disposition pour vous aider.",
+    "tags": [
+      "général",
+      "information"
+    ],
+    "mots_cles": [
+      "Allemagne",
+      "capitale",
+      "Berlin"
+    ],
+    "langue": "french",
+    "source": "auto_generated",
+    "statut": "validé",
+    "date_creation": "2026-04-21 12:52",
+    "score_rag_avant": 0.378,
+    "attempt": 1,
+    "date_validation": "2026-04-21 12:53"
+  },
+  {
+    "id": "auto_26579",
+    "gap_id": "gap_57525",
+    "question": "كيف أسترجع كلمة المرور؟",
+    "reponse": "يمكنك استرجاع كلمة المرور من خلال الضغط على خيار 'نسيان كلمة المرور' على صفحة تسجيل الدخول، ثم اتبع الإرشادات التي تظهر على الشاشة. إذا واجهت أي مشكلة، يرجى التواصل معنا على support@hoodiewear.com. سوف نرد على استفساراتك خلال 24 ساعة عمل.",
+    "tags": [
+      "كلمة المرور",
+      "استرجاع"
+    ],
+    "mots_cles": [
+      "تسجيل الدخول",
+      "نسيت كلمة المرور"
+    ],
+    "langue": "ar",
+    "source": "auto_generated",
+    "statut": "validé",
+    "date_creation": "2026-04-22 21:07",
+    "score_rag_avant": 0.0,
+    "attempt": 1,
+    "date_validation": "2026-04-22 21:07"
+  }
+]

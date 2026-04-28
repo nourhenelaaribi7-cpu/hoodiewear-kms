@@ -16,7 +16,7 @@ def get_collection():
 
     # sentence-transformers local — gratuit, rapide, pas de limite
     embedding_fn = embedding_functions.SentenceTransformerEmbeddingFunction(
-        model_name="all-MiniLM-L6-v2"
+        model_name="paraphrase-multilingual-MiniLM-L12-v2"
     )
 
     collection = client.get_or_create_collection(
